@@ -58,6 +58,9 @@
     <string name="unit_label">Unit</string>
     <string name="all_category">All</string>
     <string name="char_limit_format">%1$d / %2$d</string>
+    <string name="close_desc">Close</string>
+    <string name="more_options_desc">More Options</string>
+    <string name="finish_cooking_btn">Finish Cooking</string>
 
     <!-- Image Selection -->
     <string name="select_image_title">Select Image</string>

@@ -1,6 +1,7 @@
 package com.hritik.recipevault.ui.screen.detail
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -21,6 +22,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -32,6 +34,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
 import com.hritik.recipevault.R
 import com.hritik.recipevault.domain.model.Ingredient
+import kotlinx.coroutines.launch
 
 @Composable
 fun RecipeDetailScreen(
@@ -41,6 +44,7 @@ fun RecipeDetailScreen(
 ) {
     val state by viewModel.state.collectAsStateWithLifecycle()
     var showDeleteDialog by remember { mutableStateOf(false) }
+    val scope = rememberCoroutineScope()
 
     if (showDeleteDialog) {
         AlertDialog(
@@ -98,25 +102,42 @@ fun RecipeDetailScreen(
                         onDelete = { showDeleteDialog = true }
                     )
 
-                    HorizontalPager(
-                        state = pagerState,
-                        modifier = Modifier.weight(1f),
-                        verticalAlignment = Alignment.Top
-                    ) { page ->
-                        if (page == 0) {
-                            IngredientsPage(
-                                recipeName = recipe.recipeName,
-                                imageUri = recipe.imageUri,
-                                ingredients = recipe.ingredients
-                            )
-                        } else {
-                            val step = recipe.steps[page - 1]
-                            StepPage(
-                                stepIndex = page,
-                                description = step.description,
-                                isLastStep = page == pageCount - 1,
-                                onFinish = onPopBackStack
-                            )
+                    Box(
+                        modifier = Modifier
+                            .weight(1f)
+                            .pointerInput(pageCount) {
+                                detectTapGestures { offset ->
+                                    val isLeft = offset.x < size.width / 2
+                                    scope.launch {
+                                        if (isLeft && pagerState.currentPage > 0) {
+                                            pagerState.animateScrollToPage(pagerState.currentPage - 1)
+                                        } else if (!isLeft && pagerState.currentPage < pageCount - 1) {
+                                            pagerState.animateScrollToPage(pagerState.currentPage + 1)
+                                        }
+                                    }
+                                }
+                            }
+                    ) {
+                        HorizontalPager(
+                            state = pagerState,
+                            modifier = Modifier.fillMaxSize(),
+                            verticalAlignment = Alignment.Top
+                        ) { page ->
+                            if (page == 0) {
+                                IngredientsPage(
+                                    recipeName = recipe.recipeName,
+                                    imageUri = recipe.imageUri,
+                                    ingredients = recipe.ingredients
+                                )
+                            } else {
+                                val step = recipe.steps[page - 1]
+                                StepPage(
+                                    stepIndex = page,
+                                    description = step.description,
+                                    isLastStep = page == pageCount - 1,
+                                    onFinish = onPopBackStack
+                                )
+                            }
                         }
                     }
                 }
@@ -180,7 +201,7 @@ fun RecipeDetailHeader(
                 .size(40.dp)
                 .background(Color.Black.copy(alpha = 0.05f), CircleShape)
         ) {
-            Icon(Icons.Default.Close, contentDescription = "Close")
+            Icon(Icons.Default.Close, contentDescription = stringResource(R.string.close_desc))
         }
 
         // Title Pill
@@ -207,7 +228,7 @@ fun RecipeDetailHeader(
                     .size(40.dp)
                     .background(Color.Black.copy(alpha = 0.05f), CircleShape)
             ) {
-                Icon(Icons.Default.MoreVert, contentDescription = "More")
+                Icon(Icons.Default.MoreVert, contentDescription = stringResource(R.string.more_options_desc))
             }
             DropdownMenu(
                 expanded = showMenu,
@@ -379,7 +400,7 @@ fun StepPage(
             ) {
                 Icon(Icons.Rounded.Restaurant, contentDescription = null)
                 Spacer(Modifier.width(12.dp))
-                Text("Finish Cooking", fontWeight = FontWeight.ExtraBold, fontSize = 18.sp)
+                Text(stringResource(R.string.finish_cooking_btn), fontWeight = FontWeight.ExtraBold, fontSize = 18.sp)
             }
         }
     }
