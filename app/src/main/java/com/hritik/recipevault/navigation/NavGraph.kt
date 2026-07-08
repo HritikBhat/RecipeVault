@@ -84,6 +84,9 @@ fun NavGraph(
             RecipeDetailScreen(
                 onPopBackStack = {
                     navController.popBackStack()
+                },
+                onNavigateToEditRecipe = { recipeId ->
+                    navController.navigate(Screen.EditRecipe.passId(recipeId))
                 }
             )
         }

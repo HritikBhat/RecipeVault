@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.hritik.recipevault.data.repository.RecipeRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
@@ -33,5 +34,14 @@ class RecipeDetailViewModel @Inject constructor(
                 _state.update { it.copy(isLoading = false, error = e.message) }
             }
             .launchIn(viewModelScope)
+    }
+
+    fun deleteRecipe(onSuccess: () -> Unit) {
+        state.value.recipe?.let { recipe ->
+            viewModelScope.launch {
+                repository.deleteRecipe(recipe)
+                onSuccess()
+            }
+        }
     }
 }

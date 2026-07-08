@@ -64,6 +64,8 @@ fun IngredientEntity.toDomain(): Ingredient {
         id = id,
         recipeId = recipeId,
         ingredientName = ingredientName,
+        quantity = quantity,
+        unit = unit,
         position = position
     )
 }
@@ -96,6 +98,8 @@ fun Ingredient.toEntity(recipeId: Long): IngredientEntity {
         id = id,
         recipeId = recipeId,
         ingredientName = ingredientName,
+        quantity = quantity,
+        unit = unit,
         position = position
     )
 }
