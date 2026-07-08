@@ -57,6 +57,7 @@
     <string name="quantity_label">Quantity</string>
     <string name="unit_label">Unit</string>
     <string name="all_category">All</string>
+    <string name="char_limit_format">%1$d / %2$d</string>
 
     <!-- Image Selection -->
     <string name="select_image_title">Select Image</string>

@@ -1,12 +1,15 @@
 package com.hritik.recipevault.ui.components
 
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.*
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.style.TextAlign
 import com.hritik.recipevault.R
 
 @Composable
@@ -29,16 +32,28 @@ fun StepDialog(
             Column {
                 OutlinedTextField(
                     value = description,
-                    onValueChange = { description = it },
+                    onValueChange = { 
+                        if (it.length <= 60 || it.length < description.length) {
+                            description = it 
+                        }
+                    },
                     label = { Text(stringResource(id = R.string.step_desc_label)) },
-                    minLines = 3
+                    minLines = 3,
+                    modifier = Modifier.fillMaxWidth(),
+                    supportingText = {
+                        Text(
+                            text = stringResource(id = R.string.char_limit_format, description.length, 60),
+                            modifier = Modifier.fillMaxWidth(),
+                            textAlign = TextAlign.End,
+                        )
+                    }
                 )
             }
         },
         confirmButton = {
             TextButton(
                 onClick = {
-                    if (description.isNotBlank()) {
+                    if (description.isNotBlank() && description.length <= 60) {
                         onConfirm(description)
                         onDismiss()
                     }

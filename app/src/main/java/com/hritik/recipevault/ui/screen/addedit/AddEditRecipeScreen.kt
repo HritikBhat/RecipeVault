@@ -49,7 +49,6 @@ import com.hritik.recipevault.ui.components.CollectionDialog
 import com.hritik.recipevault.ui.components.IngredientDialog
 import com.hritik.recipevault.ui.components.StepDialog
 import java.io.File
-import java.io.FileOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -87,10 +86,7 @@ fun AddEditRecipeScreen(
     val galleryLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
-        uri?.let {
-            val savedUri = saveImageToInternalStorage(context, it)
-            viewModel.onImageUriChange(savedUri.toString())
-        }
+        uri?.let { viewModel.onImageUriChange(it.toString()) }
     }
 
     val cameraLauncher = rememberLauncherForActivityResult(
@@ -108,8 +104,6 @@ fun AddEditRecipeScreen(
             val uri = createImageUri(context)
             tempImageUri = uri
             cameraLauncher.launch(uri)
-        } else {
-            // Handle permission denied
         }
     }
 
@@ -523,23 +517,6 @@ fun AddEditRecipeScreen(
             onDismiss = { showCollectionDialog = false }
         )
     }
-}
-
-private fun saveImageToInternalStorage(context: Context, uri: Uri): Uri {
-    val inputStream = context.contentResolver.openInputStream(uri)
-    val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
-    val storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-    val file = File(storageDir, "RECIPE_${timeStamp}.jpg")
-    inputStream?.use { input ->
-        FileOutputStream(file).use { output ->
-            input.copyTo(output)
-        }
-    }
-    return FileProvider.getUriForFile(
-        context,
-        "${context.packageName}.fileprovider",
-        file
-    )
 }
 
 private fun createImageUri(context: Context): Uri {
