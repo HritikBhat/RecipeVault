@@ -83,6 +83,7 @@ fun PremiumScreen(
 
     Scaffold(
         containerColor = backgroundColor,
+        contentWindowInsets = WindowInsets(0), // Prevent double padding
         topBar = {
             TopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = backgroundColor),
@@ -91,7 +92,8 @@ fun PremiumScreen(
                     IconButton(onClick = onNavigateBack) {
                         Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.back_desc), tint = brownColor)
                     }
-                }
+                },
+                windowInsets = WindowInsets(0, 0, 0, 0) // Remove internal status bar padding
             )
         }
     ) { paddingValues ->
