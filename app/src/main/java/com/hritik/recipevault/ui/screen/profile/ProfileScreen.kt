@@ -1,7 +1,6 @@
 package com.hritik.recipevault.ui.screen.profile
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -13,14 +12,20 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.ChevronRight
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import coil.compose.AsyncImage
 import com.hritik.recipevault.R
 import com.hritik.recipevault.ui.components.BottomNavigationBar
 
@@ -28,15 +33,19 @@ import com.hritik.recipevault.ui.components.BottomNavigationBar
 @Composable
 fun ProfileScreen(
     onNavigateToHome: () -> Unit,
-    onNavigateToCollections: () -> Unit
+    onNavigateToCollections: () -> Unit,
+    onNavigateToLogin: () -> Unit,
+    viewModel: ProfileViewModel = hiltViewModel()
 ) {
+    val user by viewModel.user.collectAsStateWithLifecycle()
+    
     val backgroundColor = Color(0xFFFDF5F0)
     val brownColor = Color(0xFF5D4037)
-    val primaryAppColor = Color(0xFF5D4037) // Theme-friendly brown color
-    val iconBackground = Color(0xFFEFE6DD)
+    val primaryAppColor = Color(0xFF5D4037)
 
     Scaffold(
         containerColor = backgroundColor,
+        contentWindowInsets = WindowInsets(0),
         topBar = {
             TopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = backgroundColor),
@@ -60,7 +69,8 @@ fun ProfileScreen(
                 },
                 actions = {
                     Box(modifier = Modifier.size(48.dp))
-                }
+                },
+                windowInsets = WindowInsets(0, 0, 0, 0)
             )
         },
         bottomBar = {
@@ -81,32 +91,43 @@ fun ProfileScreen(
         ) {
             Spacer(modifier = Modifier.height(32.dp))
 
-            // Profile Header
-            Box(
-                modifier = Modifier
-                    .size(100.dp)
-                    .background(Color(0xFF8B6B5E), CircleShape),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "H",
-                    color = Color.White,
-                    fontSize = 48.sp,
-                    fontWeight = FontWeight.Light
+            // Profile Image / Avatar
+            if (user?.photoUrl != null) {
+                AsyncImage(
+                    model = user?.photoUrl,
+                    contentDescription = "Profile Picture",
+                    modifier = Modifier
+                        .size(100.dp)
+                        .clip(CircleShape),
+                    contentScale = ContentScale.Crop
                 )
+            } else {
+                Box(
+                    modifier = Modifier
+                        .size(100.dp)
+                        .background(Color(0xFF8B6B5E), CircleShape),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = user?.displayName?.firstOrNull()?.toString()?.uppercase() ?: "U",
+                        color = Color.White,
+                        fontSize = 48.sp,
+                        fontWeight = FontWeight.Light
+                    )
+                }
             }
 
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = "Hritik Bhat",
+                text = user?.displayName ?: "User",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black
             )
 
             Text(
-                text = "bhathritik399@gmail.com",
+                text = user?.email ?: "",
                 fontSize = 14.sp,
                 color = Color.Gray
             )
@@ -165,7 +186,11 @@ fun ProfileScreen(
                 title = "Logout",
                 titleColor = Color(0xFFD32F2F),
                 iconColor = Color(0xFFD32F2F),
-                onClick = {}
+                onClick = {
+                    viewModel.logout {
+                        onNavigateToLogin()
+                    }
+                }
             )
 
             Spacer(modifier = Modifier.height(32.dp))

@@ -44,6 +44,7 @@ fun HomeScreen(
 
     Scaffold(
         containerColor = backgroundColor,
+        contentWindowInsets = WindowInsets(0), // Prevent double padding
         topBar = {
             TopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = backgroundColor),
@@ -73,7 +74,8 @@ fun HomeScreen(
                             tint = brownColor
                         )
                     }
-                }
+                },
+                windowInsets = WindowInsets(0, 0, 0, 0) // Remove internal status bar padding
             )
         },
         floatingActionButton = {

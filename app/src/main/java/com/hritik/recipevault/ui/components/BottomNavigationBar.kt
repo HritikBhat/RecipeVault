@@ -1,5 +1,6 @@
 package com.hritik.recipevault.ui.components
 
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.AutoAwesomeMotion
 import androidx.compose.material.icons.outlined.Person
@@ -26,7 +27,8 @@ fun BottomNavigationBar(
 ) {
     NavigationBar(
         containerColor = Color.White,
-        tonalElevation = 8.dp
+        tonalElevation = 8.dp,
+        windowInsets = WindowInsets(0, 0, 0, 0) // Remove navigation bar padding as it's handled by BannerAd or MainActivity Scaffold
     ) {
         val items = listOf(
             BottomNavItem(stringResource(id = R.string.nav_recipes), Icons.Outlined.RestaurantMenu, "home", onHomeClick),

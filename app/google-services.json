@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1033260034785",
+    "project_id": "chefvault-7b379",
+    "storage_bucket": "chefvault-7b379.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033260034785:android:5ce5b0a7f46242be58e5a0",
+        "android_client_info": {
+          "package_name": "com.hritik.recipevault"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1033260034785-27fj2j1578dstb7s9dq4eaovc82spkl2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.hritik.recipevault",
+            "certificate_hash": "e502a2f6c86c5b98d4d42794325b9cbf77c73681"
+          }
+        },
+        {
+          "client_id": "1033260034785-mn7uefltkvohro5ok2tp0qeaf7rgn5if.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCRDG6oTP1HHdxS9iZFbBnFWSbG5paUM0U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1033260034785-mn7uefltkvohro5ok2tp0qeaf7rgn5if.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

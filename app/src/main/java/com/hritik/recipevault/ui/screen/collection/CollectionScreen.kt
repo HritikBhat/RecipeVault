@@ -49,6 +49,7 @@ fun CollectionScreen(
 
     Scaffold(
         containerColor = backgroundColor,
+        contentWindowInsets = WindowInsets(0), // Prevent double padding
         topBar = {
             TopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = backgroundColor),
@@ -73,7 +74,8 @@ fun CollectionScreen(
                 actions = {
                     // Empty Box of same size as IconButton to keep title centered
                     Box(modifier = Modifier.size(48.dp))
-                }
+                },
+                windowInsets = WindowInsets(0, 0, 0, 0) // Remove internal status bar padding
             )
         },
         floatingActionButton = {

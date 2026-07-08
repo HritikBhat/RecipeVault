@@ -65,7 +65,9 @@ fun RecipeDetailScreen(
         )
     }
 
-    Scaffold { paddingValues ->
+    Scaffold(
+        contentWindowInsets = WindowInsets(0, 0, 0, 0) // Remove extra insets padding
+    ) { paddingValues ->
         Box(
             modifier = Modifier
                 .padding(paddingValues)

@@ -1,6 +1,7 @@
 package com.hritik.recipevault.navigation
 
 sealed class Screen(val route: String) {
+    object Login : Screen("login")
     object Home : Screen("home")
     object AddRecipe : Screen("add_recipe")
     object EditRecipe : Screen("edit_recipe/{recipeId}") {

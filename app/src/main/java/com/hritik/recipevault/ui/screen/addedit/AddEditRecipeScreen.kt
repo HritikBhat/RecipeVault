@@ -109,7 +109,8 @@ fun AddEditRecipeScreen(
                 },
                 actions = {
                     Box(modifier = Modifier.size(48.dp))
-                }
+                },
+                windowInsets = WindowInsets(0, 0, 0, 0) // Remove internal status bar padding
             )
         },
         bottomBar = {

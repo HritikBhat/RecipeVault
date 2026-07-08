@@ -10,16 +10,28 @@ import com.hritik.recipevault.ui.screen.addedit.AddEditRecipeScreen
 import com.hritik.recipevault.ui.screen.collection.CollectionScreen
 import com.hritik.recipevault.ui.screen.detail.RecipeDetailScreen
 import com.hritik.recipevault.ui.screen.home.HomeScreen
+import com.hritik.recipevault.ui.screen.login.LoginScreen
 import com.hritik.recipevault.ui.screen.profile.ProfileScreen
 
 @Composable
 fun NavGraph(
-    navController: NavHostController
+    navController: NavHostController,
+    startDestination: String
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screen.Home.route
+        startDestination = startDestination
     ) {
+        composable(route = Screen.Login.route) {
+            LoginScreen(
+                onLoginSuccess = {
+                    navController.navigate(Screen.Home.route) {
+                        popUpTo(Screen.Login.route) { inclusive = true }
+                    }
+                }
+            )
+        }
+
         composable(route = Screen.Home.route) {
             HomeScreen(
                 onNavigateToAddRecipe = {
@@ -120,6 +132,11 @@ fun NavGraph(
                         popUpTo(Screen.Home.route) { saveState = true }
                         launchSingleTop = true
                         restoreState = true
+                    }
+                },
+                onNavigateToLogin = {
+                    navController.navigate(Screen.Login.route) {
+                        popUpTo(0) { inclusive = true }
                     }
                 }
             )
