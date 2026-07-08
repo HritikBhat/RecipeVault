@@ -9,7 +9,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Category
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
@@ -60,19 +59,6 @@ fun CollectionScreen(
                             color = brownColor
                         )
                     }
-                },
-                navigationIcon = {
-                    IconButton(onClick = { }) {
-                        Icon(
-                            imageVector = Icons.Default.Menu,
-                            contentDescription = stringResource(id = R.string.menu_desc),
-                            tint = brownColor
-                        )
-                    }
-                },
-                actions = {
-                    // Empty Box of same size as IconButton to keep title centered
-                    Box(modifier = Modifier.size(48.dp))
                 },
                 windowInsets = WindowInsets(0, 0, 0, 0) // Remove internal status bar padding
             )

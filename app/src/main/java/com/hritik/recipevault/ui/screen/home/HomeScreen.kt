@@ -57,24 +57,6 @@ fun HomeScreen(
                         )
                     }
                 },
-                navigationIcon = {
-                    IconButton(onClick = { }) {
-                        Icon(
-                            imageVector = Icons.Default.Menu,
-                            contentDescription = stringResource(id = R.string.menu_desc),
-                            tint = brownColor
-                        )
-                    }
-                },
-                actions = {
-                    IconButton(onClick = { }) {
-                        Icon(
-                            imageVector = Icons.Default.Search,
-                            contentDescription = stringResource(id = R.string.search_desc),
-                            tint = brownColor
-                        )
-                    }
-                },
                 windowInsets = WindowInsets(0, 0, 0, 0) // Remove internal status bar padding
             )
         },

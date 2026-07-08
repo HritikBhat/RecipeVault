@@ -59,18 +59,6 @@ fun ProfileScreen(
                         )
                     }
                 },
-                navigationIcon = {
-                    IconButton(onClick = { }) {
-                        Icon(
-                            imageVector = Icons.Default.Menu,
-                            contentDescription = stringResource(id = R.string.menu_desc),
-                            tint = brownColor
-                        )
-                    }
-                },
-                actions = {
-                    Box(modifier = Modifier.size(48.dp))
-                },
                 windowInsets = WindowInsets(0, 0, 0, 0)
             )
         },
