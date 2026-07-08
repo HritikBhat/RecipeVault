@@ -10,11 +10,13 @@ import com.hritik.recipevault.data.local.dao.RecipeDao
 import com.hritik.recipevault.data.local.database.RecipeDatabase
 import com.hritik.recipevault.data.local.datastore.UserPreferences
 import com.hritik.recipevault.data.repository.AuthRepositoryImpl
+import com.hritik.recipevault.data.repository.BackupRepositoryImpl
 import com.hritik.recipevault.data.repository.CollectionRepository
 import com.hritik.recipevault.data.repository.CollectionRepositoryImpl
 import com.hritik.recipevault.data.repository.RecipeRepository
 import com.hritik.recipevault.data.repository.RecipeRepositoryImpl
 import com.hritik.recipevault.domain.repository.AuthRepository
+import com.hritik.recipevault.domain.repository.BackupRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -58,6 +60,12 @@ object AppModule {
     @Singleton
     fun provideCollectionRepository(dao: CollectionDao): CollectionRepository {
         return CollectionRepositoryImpl(dao)
+    }
+
+    @Provides
+    @Singleton
+    fun provideBackupRepository(recipeDao: RecipeDao, collectionDao: CollectionDao): BackupRepository {
+        return BackupRepositoryImpl(recipeDao, collectionDao)
     }
 
     @Provides
