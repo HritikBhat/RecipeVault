@@ -28,7 +28,7 @@ fun InterstitialAdHandler(isAdAllowed: Boolean) {
                 "ca-app-pub-3940256099942544/1033173712" // Test Interstitial ID
             } else {
                 // Replace with your real production Ad Unit ID
-                "ca-app-pub-4549313342341988/9717682267"
+                "ca-app-pub-4549313342341988/8551188255"
             }
 
             InterstitialAd.load(

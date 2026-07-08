@@ -1,5 +1,12 @@
 package com.hritik.recipevault.ui.screen.addedit
 
+import android.Manifest
+import android.content.Context
+import android.content.pm.PackageManager
+import android.net.Uri
+import android.os.Environment
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -18,24 +25,33 @@ import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.content.ContextCompat
+import androidx.core.content.FileProvider
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import coil.compose.AsyncImage
 import com.hritik.recipevault.R
 import com.hritik.recipevault.domain.model.Ingredient
 import com.hritik.recipevault.ui.components.CollectionDialog
 import com.hritik.recipevault.ui.components.IngredientDialog
 import com.hritik.recipevault.ui.components.StepDialog
+import java.io.File
+import java.io.FileOutputStream
+import java.text.SimpleDateFormat
+import java.util.*
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -58,11 +74,44 @@ fun AddEditRecipeScreen(
     var collectionExpanded by remember { mutableStateOf(false) }
     var showCollectionDialog by remember { mutableStateOf(false) }
 
+    var showImageSourceDialog by remember { mutableStateOf(false) }
+    var tempImageUri by remember { mutableStateOf<Uri?>(null) }
+
     val backgroundColor = Color(0xFFFDF8F5)
     val brownColor = Color(0xFF8B4513)
     val labelColor = Color(0xFF7D6A61)
     val primaryButtonColor = Color(0xFF8B4513)
     val addStepBtnColor = Color(0xFFEDE4DB)
+
+    // Image Launchers
+    val galleryLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent()
+    ) { uri: Uri? ->
+        uri?.let {
+            val savedUri = saveImageToInternalStorage(context, it)
+            viewModel.onImageUriChange(savedUri.toString())
+        }
+    }
+
+    val cameraLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.TakePicture()
+    ) { success ->
+        if (success) {
+            tempImageUri?.let { viewModel.onImageUriChange(it.toString()) }
+        }
+    }
+
+    val permissionLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.RequestPermission()
+    ) { isGranted ->
+        if (isGranted) {
+            val uri = createImageUri(context)
+            tempImageUri = uri
+            cameraLauncher.launch(uri)
+        } else {
+            // Handle permission denied
+        }
+    }
 
     LaunchedEffect(state.isRecipeSaved) {
         if (state.isRecipeSaved) {
@@ -112,7 +161,7 @@ fun AddEditRecipeScreen(
                 actions = {
                     Box(modifier = Modifier.size(48.dp))
                 },
-                windowInsets = WindowInsets(0, 0, 0, 0) // Remove internal status bar padding
+                windowInsets = WindowInsets(0, 0, 0, 0)
             )
         },
         bottomBar = {
@@ -192,7 +241,7 @@ fun AddEditRecipeScreen(
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     Text(
-                        text = "Collection",
+                        text = stringResource(id = R.string.collection_label),
                         color = labelColor,
                         fontSize = 14.sp,
                         fontWeight = FontWeight.SemiBold
@@ -204,7 +253,7 @@ fun AddEditRecipeScreen(
                     ) {
                         Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(18.dp), tint = brownColor)
                         Spacer(modifier = Modifier.width(4.dp))
-                        Text("Add Collection", color = brownColor, fontSize = 14.sp, fontWeight = FontWeight.Bold)
+                        Text(stringResource(id = R.string.add_collection_btn), color = brownColor, fontSize = 14.sp, fontWeight = FontWeight.Bold)
                     }
                 }
                 
@@ -219,7 +268,7 @@ fun AddEditRecipeScreen(
                             value = state.category,
                             onValueChange = { },
                             readOnly = true,
-                            placeholder = { Text("Select a collection", color = Color.LightGray) },
+                            placeholder = { Text(stringResource(id = R.string.select_collection_placeholder), color = Color.LightGray) },
                             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = collectionExpanded) },
                             modifier = Modifier
                                 .fillMaxWidth()
@@ -250,7 +299,7 @@ fun AddEditRecipeScreen(
                                     Row(verticalAlignment = Alignment.CenterVertically) {
                                         Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(18.dp), tint = brownColor)
                                         Spacer(modifier = Modifier.width(8.dp))
-                                        Text("Add New Collection", color = brownColor, fontWeight = FontWeight.Bold)
+                                        Text(stringResource(id = R.string.add_new_collection_btn), color = brownColor, fontWeight = FontWeight.Bold)
                                     }
                                 },
                                 onClick = {
@@ -271,7 +320,7 @@ fun AddEditRecipeScreen(
                             onValueChange = { },
                             readOnly = true,
                             enabled = false,
-                            placeholder = { Text("Select a collection", color = Color.LightGray) },
+                            placeholder = { Text(stringResource(id = R.string.select_collection_placeholder), color = Color.LightGray) },
                             modifier = Modifier.fillMaxWidth(),
                             shape = RoundedCornerShape(12.dp),
                             colors = OutlinedTextFieldDefaults.colors(
@@ -295,10 +344,11 @@ fun AddEditRecipeScreen(
                 )
                 Spacer(modifier = Modifier.height(8.dp))
                 DashedUploadBox(
+                    imageUri = state.imageUri,
                     modifier = Modifier
                         .fillMaxWidth()
                         .height(160.dp),
-                    onClick = { viewModel.onImageUriChange("https://images.unsplash.com/photo-1509440159596-0249088772ff") }
+                    onClick = { showImageSourceDialog = true }
                 )
 
                 Spacer(modifier = Modifier.height(24.dp))
@@ -390,12 +440,59 @@ fun AddEditRecipeScreen(
         }
     }
 
+    if (showImageSourceDialog) {
+        AlertDialog(
+            onDismissRequest = { showImageSourceDialog = false },
+            title = { Text(stringResource(id = R.string.select_image_title)) },
+            text = {
+                Column {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                showImageSourceDialog = false
+                                galleryLauncher.launch("image/*")
+                            }
+                            .padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(Icons.Default.PhotoLibrary, contentDescription = null)
+                        Spacer(modifier = Modifier.width(16.dp))
+                        Text(stringResource(id = R.string.gallery_option))
+                    }
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable {
+                                showImageSourceDialog = false
+                                val permissionCheckResult = ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
+                                if (permissionCheckResult == PackageManager.PERMISSION_GRANTED) {
+                                    val uri = createImageUri(context)
+                                    tempImageUri = uri
+                                    cameraLauncher.launch(uri)
+                                } else {
+                                    permissionLauncher.launch(Manifest.permission.CAMERA)
+                                }
+                            }
+                            .padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Icon(Icons.Default.CameraAlt, contentDescription = null)
+                        Spacer(modifier = Modifier.width(16.dp))
+                        Text(stringResource(id = R.string.camera_option))
+                    }
+                }
+            },
+            confirmButton = {}
+        )
+    }
+
     if (showIngredientDialog) {
         val ingredient = editingIngredientIndex?.let { state.ingredients[it] }
         IngredientDialog(
             initialName = ingredient?.ingredientName ?: "",
             initialQuantity = ingredient?.quantity ?: "",
-            initialUnit = ingredient?.unit ?: "qty",
+            initialUnit = ingredient?.unit ?: stringResource(id = R.string.default_unit),
             onConfirm = { name, quantity, unit ->
                 editingIngredientIndex?.let {
                     viewModel.updateIngredient(it, name, quantity, unit)
@@ -428,6 +525,34 @@ fun AddEditRecipeScreen(
     }
 }
 
+private fun saveImageToInternalStorage(context: Context, uri: Uri): Uri {
+    val inputStream = context.contentResolver.openInputStream(uri)
+    val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+    val storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+    val file = File(storageDir, "RECIPE_${timeStamp}.jpg")
+    inputStream?.use { input ->
+        FileOutputStream(file).use { output ->
+            input.copyTo(output)
+        }
+    }
+    return FileProvider.getUriForFile(
+        context,
+        "${context.packageName}.fileprovider",
+        file
+    )
+}
+
+private fun createImageUri(context: Context): Uri {
+    val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+    val storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+    val file = File.createTempFile("JPEG_${timeStamp}_", ".jpg", storageDir)
+    return FileProvider.getUriForFile(
+        context,
+        "${context.packageName}.fileprovider",
+        file
+    )
+}
+
 @Composable
 fun StepCard(
     index: Int,
@@ -450,7 +575,7 @@ fun StepCard(
                 horizontalArrangement = Arrangement.SpaceBetween,
                 verticalAlignment = Alignment.CenterVertically) {
                 Text(
-                    text = "Step $index",
+                    text = stringResource(id = R.string.step_label_with_index, index),
                     color = brownColor,
                     fontWeight = FontWeight.Bold,
                     fontSize = 18.sp
@@ -500,6 +625,7 @@ fun StepCard(
 
 @Composable
 fun DashedUploadBox(
+    imageUri: String?,
     modifier: Modifier = Modifier,
     onClick: () -> Unit
 ) {
@@ -508,21 +634,45 @@ fun DashedUploadBox(
             .clickable(onClick = onClick)
             .background(Color(0xFFFFF1EE), RoundedCornerShape(12.dp))
             .drawBehind {
-                drawRoundRect(
-                    color = Color.LightGray.copy(alpha = 0.5f),
-                    style = Stroke(
-                        width = 2.dp.toPx(),
-                        pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f, 10f), 0f)
-                    ),
-                    cornerRadius = CornerRadius(12.dp.toPx())
-                )
+                if (imageUri == null) {
+                    drawRoundRect(
+                        color = Color.LightGray.copy(alpha = 0.5f),
+                        style = Stroke(
+                            width = 2.dp.toPx(),
+                            pathEffect = PathEffect.dashPathEffect(floatArrayOf(10f, 10f), 0f)
+                        ),
+                        cornerRadius = CornerRadius(12.dp.toPx())
+                    )
+                }
             },
         contentAlignment = Alignment.Center
     ) {
-        Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Icon(Icons.Outlined.Image, contentDescription = null, tint = Color.Gray, modifier = Modifier.size(32.dp))
-            Spacer(modifier = Modifier.height(8.dp))
-            Text(stringResource(id = R.string.tap_to_upload), color = Color.Gray, fontSize = 14.sp)
+        if (imageUri != null) {
+            AsyncImage(
+                model = imageUri,
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clip(RoundedCornerShape(12.dp)),
+                contentScale = ContentScale.Crop
+            )
+            // Overlay icon to indicate edit
+            Surface(
+                modifier = Modifier
+                    .padding(8.dp)
+                    .align(Alignment.BottomEnd)
+                    .size(32.dp),
+                shape = RoundedCornerShape(8.dp),
+                color = Color.Black.copy(alpha = 0.5f)
+            ) {
+                Icon(Icons.Default.Edit, contentDescription = null, tint = Color.White, modifier = Modifier.padding(6.dp))
+            }
+        } else {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Icon(Icons.Outlined.Image, contentDescription = null, tint = Color.Gray, modifier = Modifier.size(32.dp))
+                Spacer(modifier = Modifier.height(8.dp))
+                Text(stringResource(id = R.string.tap_to_upload), color = Color.Gray, fontSize = 14.sp)
+            }
         }
     }
 }

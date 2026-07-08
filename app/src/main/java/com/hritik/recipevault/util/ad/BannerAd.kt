@@ -41,7 +41,7 @@ fun BannerAd(modifier: Modifier = Modifier) {
                         "ca-app-pub-3940256099942544/6300978111"
                     } else {
                         // Replace with your real production Ad Unit ID
-                        "ca-app-pub-4549313342341988/7027527053"
+                        "ca-app-pub-4549313342341988/7868661971"
                     }
                     loadAd(AdRequest.Builder().build())
                 }

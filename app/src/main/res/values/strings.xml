@@ -53,6 +53,16 @@
     <string name="default_cooking_time">20m</string>
     <string name="default_difficulty">Easy</string>
     <string name="step_prefix">Step %1$d: %2$s</string>
+    <string name="default_unit">qty</string>
+    <string name="quantity_label">Quantity</string>
+    <string name="unit_label">Unit</string>
+    <string name="all_category">All</string>
+
+    <!-- Image Selection -->
+    <string name="select_image_title">Select Image</string>
+    <string name="gallery_option">Gallery</string>
+    <string name="camera_option">Camera</string>
+    <string name="camera_permission_denied">Camera permission is required to take pictures.</string>
 
     <!-- Validation Errors -->
     <string name="err_empty_name">Recipe name cannot be empty</string>
@@ -60,6 +70,10 @@
     <string name="err_no_steps">Please add at least one step</string>
 
     <!-- Collections -->
+    <string name="collection_label">Collection</string>
+    <string name="add_collection_btn">Add Collection</string>
+    <string name="select_collection_placeholder">Select a collection</string>
+    <string name="add_new_collection_btn">Add New Collection</string>
     <string name="manage_collections_title">Manage Categories</string>
     <string name="add_collection_placeholder">Add new category...</string>
     <string name="existing_collections_label">EXISTING CATEGORIES</string>

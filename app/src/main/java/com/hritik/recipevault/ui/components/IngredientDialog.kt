@@ -15,7 +15,7 @@ import com.hritik.recipevault.R
 fun IngredientDialog(
     initialName: String = "",
     initialQuantity: String = "",
-    initialUnit: String = "qty",
+    initialUnit: String = stringResource(id = R.string.default_unit),
     onConfirm: (String, String, String) -> Unit,
     onDismiss: () -> Unit
 ) {
@@ -51,7 +51,7 @@ fun IngredientDialog(
                     OutlinedTextField(
                         value = quantity,
                         onValueChange = { quantity = it },
-                        label = { Text("Quantity") },
+                        label = { Text(stringResource(id = R.string.quantity_label)) },
                         singleLine = true,
                         modifier = Modifier.weight(1f),
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
@@ -66,10 +66,10 @@ fun IngredientDialog(
                             value = unit,
                             onValueChange = {},
                             readOnly = true,
-                            label = { Text("Unit") },
+                            label = { Text(stringResource(id = R.string.unit_label)) },
                             trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = unitExpanded) },
                             modifier = Modifier.menuAnchor(),
-                            colors = ExposedDropdownMenuDefaults.outlinedTextFieldColors()
+                            colors = OutlinedTextFieldDefaults.colors()
                         )
                         ExposedDropdownMenu(
                             expanded = unitExpanded,

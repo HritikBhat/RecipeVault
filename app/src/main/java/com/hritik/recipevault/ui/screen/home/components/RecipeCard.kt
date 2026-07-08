@@ -132,7 +132,7 @@ fun RecipeCard(
                     )
                     Spacer(modifier = Modifier.width(4.dp))
                     Text(
-                        text = recipe.cookingTime.ifEmpty { "20m" },
+                        text = recipe.cookingTime.ifEmpty { stringResource(id = R.string.default_cooking_time) },
                         style = MaterialTheme.typography.bodyMedium,
                         color = Color.Gray
                     )
@@ -147,7 +147,7 @@ fun RecipeCard(
                     )
                     Spacer(modifier = Modifier.width(4.dp))
                     Text(
-                        text = recipe.difficulty.ifEmpty { "Easy" },
+                        text = recipe.difficulty.ifEmpty { stringResource(id = R.string.default_difficulty) },
                         style = MaterialTheme.typography.bodyMedium,
                         color = Color.Gray
                     )
