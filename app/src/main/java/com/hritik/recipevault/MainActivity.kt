@@ -12,9 +12,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.google.android.gms.ads.MobileAds
 import com.hritik.recipevault.navigation.NavGraph
+import com.hritik.recipevault.navigation.Screen
 import com.hritik.recipevault.ui.theme.RecipeVaultTheme
 import com.hritik.recipevault.util.ad.BannerAd
 import com.hritik.recipevault.util.ad.InterstitialAdHandler
@@ -38,14 +40,21 @@ class MainActivity : ComponentActivity() {
             RecipeVaultTheme {
                 if (startDestination != null) {
                     val navController = rememberNavController()
+                    val navBackStackEntry by navController.currentBackStackEntryAsState()
+                    val currentRoute = navBackStackEntry?.destination?.route
+                    
+                    // Show ads only if we're not on the login screen
+                    val isAdAllowed = currentRoute != Screen.Login.route
                     
                     // Handle Interstitial Ads globally
-                    InterstitialAdHandler(isAdAllowed = true)
+                    InterstitialAdHandler(isAdAllowed = isAdAllowed)
                     
                     Scaffold(
                         modifier = Modifier.fillMaxSize(),
                         bottomBar = {
-                            BannerAd()
+                            if (isAdAllowed) {
+                                BannerAd()
+                            }
                         }
                     ) { innerPadding ->
                         Box(modifier = Modifier.padding(innerPadding)) {

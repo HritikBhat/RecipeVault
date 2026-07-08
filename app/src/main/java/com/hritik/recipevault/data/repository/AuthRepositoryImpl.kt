@@ -8,6 +8,7 @@ import com.hritik.recipevault.domain.model.User
 import com.hritik.recipevault.domain.repository.AuthRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.tasks.await
+import kotlinx.coroutines.withTimeoutOrNull
 import javax.inject.Inject
 
 class AuthRepositoryImpl @Inject constructor(
@@ -32,8 +33,18 @@ class AuthRepositoryImpl @Inject constructor(
                 createdAt = firebaseUser.metadata?.creationTimestamp ?: System.currentTimeMillis()
             )
 
+            // Save locally first so the user can access the app immediately
             userPreferences.saveUser(user)
-            saveUserToFirestore(user)
+
+            // Try to sync with Firestore but don't block login if it hangs or fails
+            try {
+                withTimeoutOrNull(5000) {
+                    saveUserToFirestore(user)
+                }
+            } catch (e: Exception) {
+                // Ignore sync errors during login to avoid infinite loading
+            }
+
             Result.success(user)
         } catch (e: Exception) {
             Result.failure(e)
@@ -47,9 +58,17 @@ class AuthRepositoryImpl @Inject constructor(
 
     override suspend fun saveUserToFirestore(user: User): Result<Unit> {
         return try {
+            val userMap = mapOf(
+                "uid" to user.uid,
+                "displayName" to user.displayName,
+                "email" to user.email,
+                "photoUrl" to user.photoUrl,
+                "isPremium" to user.isPremium,
+                "createdAt" to user.createdAt
+            )
             firestore.collection("users")
                 .document(user.uid)
-                .set(user)
+                .set(userMap)
                 .await()
             Result.success(Unit)
         } catch (e: Exception) {

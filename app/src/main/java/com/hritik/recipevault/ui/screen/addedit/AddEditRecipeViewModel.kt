@@ -6,6 +6,7 @@ import androidx.lifecycle.viewModelScope
 import com.hritik.recipevault.R
 import com.hritik.recipevault.data.repository.CollectionRepository
 import com.hritik.recipevault.data.repository.RecipeRepository
+import com.hritik.recipevault.domain.model.Collection
 import com.hritik.recipevault.domain.model.Ingredient
 import com.hritik.recipevault.domain.model.Recipe
 import com.hritik.recipevault.domain.model.Step
@@ -41,7 +42,7 @@ class AddEditRecipeViewModel @Inject constructor(
         collectionRepository.getAllCollections()
             .onEach { collections ->
                 _state.update { it.copy(collections = collections.map { it.name }) }
-                // Set default category if empty
+                // Set default category if empty and current category is empty
                 if (_state.value.category.isEmpty() && collections.isNotEmpty()) {
                     _state.update { it.copy(category = collections.first().name) }
                 }
@@ -87,6 +88,14 @@ class AddEditRecipeViewModel @Inject constructor(
 
     fun onCategoryChange(category: String) {
         _state.update { it.copy(category = category) }
+    }
+
+    fun addCollection(name: String) {
+        if (name.isBlank()) return
+        viewModelScope.launch {
+            collectionRepository.insertCollection(Collection(name = name))
+            _state.update { it.copy(category = name) }
+        }
     }
 
     fun addIngredient(name: String, quantity: String, unit: String) {
@@ -138,7 +147,6 @@ class AddEditRecipeViewModel @Inject constructor(
         val reorderedList = updatedList.mapIndexed { i, step ->
             step.copy(position = i)
         }
-        _state.update { it.copy(ingredients = emptyList()) } // This seems wrong in original code, but I'll fix it to steps
         _state.update { it.copy(steps = reorderedList) }
     }
 

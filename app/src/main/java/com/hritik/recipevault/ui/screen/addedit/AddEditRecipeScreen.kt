@@ -33,6 +33,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.hritik.recipevault.R
 import com.hritik.recipevault.domain.model.Ingredient
+import com.hritik.recipevault.ui.components.CollectionDialog
 import com.hritik.recipevault.ui.components.IngredientDialog
 import com.hritik.recipevault.ui.components.StepDialog
 
@@ -55,6 +56,7 @@ fun AddEditRecipeScreen(
     var editingStepIndex by remember { mutableStateOf<Int?>(null) }
 
     var collectionExpanded by remember { mutableStateOf(false) }
+    var showCollectionDialog by remember { mutableStateOf(false) }
 
     val backgroundColor = Color(0xFFFDF8F5)
     val brownColor = Color(0xFF8B4513)
@@ -184,47 +186,101 @@ fun AddEditRecipeScreen(
                 Spacer(modifier = Modifier.height(20.dp))
 
                 // Collection
-                Text(
-                    text = "Collection",
-                    color = labelColor,
-                    fontSize = 14.sp,
-                    fontWeight = FontWeight.SemiBold
-                )
-                Spacer(modifier = Modifier.height(8.dp))
-                ExposedDropdownMenuBox(
-                    expanded = collectionExpanded,
-                    onExpandedChange = { collectionExpanded = !collectionExpanded }
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    OutlinedTextField(
-                        value = state.category,
-                        onValueChange = { },
-                        readOnly = true,
-                        placeholder = { Text("Select a collection", color = Color.LightGray) },
-                        trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = collectionExpanded) },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .menuAnchor(),
-                        shape = RoundedCornerShape(12.dp),
-                        colors = OutlinedTextFieldDefaults.colors(
-                            focusedContainerColor = Color.White,
-                            unfocusedContainerColor = Color.White,
-                            focusedBorderColor = Color.LightGray,
-                            unfocusedBorderColor = Color.LightGray.copy(alpha = 0.5f)
-                        )
+                    Text(
+                        text = "Collection",
+                        color = labelColor,
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.SemiBold
                     )
-                    ExposedDropdownMenu(
-                        expanded = collectionExpanded,
-                        onDismissRequest = { collectionExpanded = false }
+                    
+                    TextButton(
+                        onClick = { showCollectionDialog = true },
+                        contentPadding = PaddingValues(0.dp)
                     ) {
-                        state.collections.forEach { collection ->
+                        Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(18.dp), tint = brownColor)
+                        Spacer(modifier = Modifier.width(4.dp))
+                        Text("Add Collection", color = brownColor, fontSize = 14.sp, fontWeight = FontWeight.Bold)
+                    }
+                }
+                
+                Spacer(modifier = Modifier.height(8.dp))
+                
+                if (state.collections.isNotEmpty()) {
+                    ExposedDropdownMenuBox(
+                        expanded = collectionExpanded,
+                        onExpandedChange = { collectionExpanded = !collectionExpanded }
+                    ) {
+                        OutlinedTextField(
+                            value = state.category,
+                            onValueChange = { },
+                            readOnly = true,
+                            placeholder = { Text("Select a collection", color = Color.LightGray) },
+                            trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = collectionExpanded) },
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .menuAnchor(),
+                            shape = RoundedCornerShape(12.dp),
+                            colors = OutlinedTextFieldDefaults.colors(
+                                focusedContainerColor = Color.White,
+                                unfocusedContainerColor = Color.White,
+                                focusedBorderColor = Color.LightGray,
+                                unfocusedBorderColor = Color.LightGray.copy(alpha = 0.5f)
+                            )
+                        )
+                        ExposedDropdownMenu(
+                            expanded = collectionExpanded,
+                            onDismissRequest = { collectionExpanded = false }
+                        ) {
+                            state.collections.forEach { collection ->
+                                DropdownMenuItem(
+                                    text = { Text(collection) },
+                                    onClick = {
+                                        viewModel.onCategoryChange(collection)
+                                        collectionExpanded = false
+                                    }
+                                )
+                            }
                             DropdownMenuItem(
-                                text = { Text(collection) },
+                                text = { 
+                                    Row(verticalAlignment = Alignment.CenterVertically) {
+                                        Icon(Icons.Default.Add, contentDescription = null, modifier = Modifier.size(18.dp), tint = brownColor)
+                                        Spacer(modifier = Modifier.width(8.dp))
+                                        Text("Add New Collection", color = brownColor, fontWeight = FontWeight.Bold)
+                                    }
+                                },
                                 onClick = {
-                                    viewModel.onCategoryChange(collection)
+                                    showCollectionDialog = true
                                     collectionExpanded = false
                                 }
                             )
                         }
+                    }
+                } else {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { showCollectionDialog = true }
+                    ) {
+                        OutlinedTextField(
+                            value = state.category,
+                            onValueChange = { },
+                            readOnly = true,
+                            enabled = false,
+                            placeholder = { Text("Select a collection", color = Color.LightGray) },
+                            modifier = Modifier.fillMaxWidth(),
+                            shape = RoundedCornerShape(12.dp),
+                            colors = OutlinedTextFieldDefaults.colors(
+                                disabledContainerColor = Color.White,
+                                disabledBorderColor = Color.LightGray.copy(alpha = 0.5f),
+                                disabledPlaceholderColor = Color.LightGray,
+                                disabledTextColor = Color.Black
+                            )
+                        )
                     }
                 }
 
@@ -358,6 +414,16 @@ fun AddEditRecipeScreen(
                 } ?: viewModel.addStep(description)
             },
             onDismiss = { showStepDialog = false }
+        )
+    }
+    
+    if (showCollectionDialog) {
+        CollectionDialog(
+            onConfirm = { name ->
+                viewModel.addCollection(name)
+                showCollectionDialog = false
+            },
+            onDismiss = { showCollectionDialog = false }
         )
     }
 }

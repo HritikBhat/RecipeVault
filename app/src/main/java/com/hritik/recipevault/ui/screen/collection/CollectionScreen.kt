@@ -49,7 +49,6 @@ fun CollectionScreen(
 
     Scaffold(
         containerColor = backgroundColor,
-        contentWindowInsets = WindowInsets(0), // Prevent double padding
         topBar = {
             TopAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = backgroundColor),
