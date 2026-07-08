@@ -11,6 +11,7 @@ import com.hritik.recipevault.ui.screen.collection.CollectionScreen
 import com.hritik.recipevault.ui.screen.detail.RecipeDetailScreen
 import com.hritik.recipevault.ui.screen.home.HomeScreen
 import com.hritik.recipevault.ui.screen.login.LoginScreen
+import com.hritik.recipevault.ui.screen.premium.PremiumScreen
 import com.hritik.recipevault.ui.screen.profile.ProfileScreen
 
 @Composable
@@ -138,6 +139,17 @@ fun NavGraph(
                     navController.navigate(Screen.Login.route) {
                         popUpTo(0) { inclusive = true }
                     }
+                },
+                onNavigateToPremium = {
+                    navController.navigate(Screen.Premium.route)
+                }
+            )
+        }
+
+        composable(route = Screen.Premium.route) {
+            PremiumScreen(
+                onNavigateBack = {
+                    navController.popBackStack()
                 }
             )
         }

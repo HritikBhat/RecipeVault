@@ -35,6 +35,7 @@ fun ProfileScreen(
     onNavigateToHome: () -> Unit,
     onNavigateToCollections: () -> Unit,
     onNavigateToLogin: () -> Unit,
+    onNavigateToPremium: () -> Unit,
     viewModel: ProfileViewModel = hiltViewModel()
 ) {
     val user by viewModel.user.collectAsStateWithLifecycle()
@@ -139,7 +140,7 @@ fun ProfileScreen(
                 icon = Icons.Default.Star,
                 title = "Get a Pro",
                 iconColor = primaryAppColor,
-                onClick = {}
+                onClick = onNavigateToPremium
             )
             
             Spacer(modifier = Modifier.height(12.dp))

@@ -90,4 +90,14 @@
 
     <!-- Authentication -->
     <string name="default_web_client_id">1033260034785-mn7uefltkvohro5ok2tp0qeaf7rgn5if.apps.googleusercontent.com</string>
+
+    <!-- Premium -->
+    <string name="premium_title">Premium Upgrade</string>
+    <string name="premium_desc">Unlock all recipes, remove ads, and sync your data across devices forever.</string>
+    <string name="buy_premium">Upgrade to Pro</string>
+    <string name="restore_purchase">Restore Purchase</string>
+    <string name="premium_success">Welcome to Premium!</string>
+    <string name="premium_active">Premium Membership Active</string>
+    <string name="confirm_account_title">Confirm Account</string>
+    <string name="confirm_account_msg">Your purchase will be linked to: %1$s</string>
 </resources>
