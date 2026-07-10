@@ -74,7 +74,7 @@ fun AddEditRecipeScreen(
     var showCollectionDialog by remember { mutableStateOf(false) }
 
     var showImageSourceDialog by remember { mutableStateOf(false) }
-    var tempImageUri by remember { mutableStateOf<Uri?>(null) }
+    var currentPhotoFile by remember { mutableStateOf<File?>(null) }
 
     val backgroundColor = Color(0xFFFDF8F5)
     val brownColor = Color(0xFF8B4513)
@@ -86,14 +86,19 @@ fun AddEditRecipeScreen(
     val galleryLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.GetContent()
     ) { uri: Uri? ->
-        uri?.let { viewModel.onImageUriChange(it.toString()) }
+        uri?.let { 
+            val savedUri = saveImageToInternalStorage(context, it)
+            savedUri?.let { viewModel.onImageUriChange(it.toString()) }
+        }
     }
 
     val cameraLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.TakePicture()
     ) { success ->
         if (success) {
-            tempImageUri?.let { viewModel.onImageUriChange(it.toString()) }
+            currentPhotoFile?.let { file ->
+                viewModel.onImageUriChange(Uri.fromFile(file).toString())
+            }
         }
     }
 
@@ -101,8 +106,9 @@ fun AddEditRecipeScreen(
         contract = ActivityResultContracts.RequestPermission()
     ) { isGranted ->
         if (isGranted) {
-            val uri = createImageUri(context)
-            tempImageUri = uri
+            val file = createImageFile(context)
+            currentPhotoFile = file
+            val uri = FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", file)
             cameraLauncher.launch(uri)
         }
     }
@@ -461,8 +467,9 @@ fun AddEditRecipeScreen(
                                 showImageSourceDialog = false
                                 val permissionCheckResult = ContextCompat.checkSelfPermission(context, Manifest.permission.CAMERA)
                                 if (permissionCheckResult == PackageManager.PERMISSION_GRANTED) {
-                                    val uri = createImageUri(context)
-                                    tempImageUri = uri
+                                    val file = createImageFile(context)
+                                    currentPhotoFile = file
+                                    val uri = FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", file)
                                     cameraLauncher.launch(uri)
                                 } else {
                                     permissionLauncher.launch(Manifest.permission.CAMERA)
@@ -519,15 +526,28 @@ fun AddEditRecipeScreen(
     }
 }
 
-private fun createImageUri(context: Context): Uri {
+private fun saveImageToInternalStorage(context: Context, uri: Uri): Uri? {
+    return try {
+        val inputStream = context.contentResolver.openInputStream(uri) ?: return null
+        val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
+        val storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
+        val file = File(storageDir, "RECIPE_$timeStamp.jpg")
+        inputStream.use { input ->
+            file.outputStream().use { output ->
+                input.copyTo(output)
+            }
+        }
+        Uri.fromFile(file)
+    } catch (e: Exception) {
+        e.printStackTrace()
+        null
+    }
+}
+
+private fun createImageFile(context: Context): File {
     val timeStamp = SimpleDateFormat("yyyyMMdd_HHmmss", Locale.getDefault()).format(Date())
     val storageDir = context.getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-    val file = File.createTempFile("JPEG_${timeStamp}_", ".jpg", storageDir)
-    return FileProvider.getUriForFile(
-        context,
-        "${context.packageName}.fileprovider",
-        file
-    )
+    return File.createTempFile("JPEG_${timeStamp}_", ".jpg", storageDir)
 }
 
 @Composable
