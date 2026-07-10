@@ -1,10 +1,15 @@
 package com.hritik.recipevault.ui.screen.profile
 
+import android.content.Intent
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -27,6 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.window.Dialog
+import androidx.core.os.LocaleListCompat
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.AsyncImage
@@ -51,6 +57,7 @@ fun ProfileScreen(
     val primaryAppColor = Color(0xFF5D4037)
 
     var showImportDialog by remember { mutableStateOf(false) }
+    var showLanguageDialog by remember { mutableStateOf(false) }
     var selectedImportUri by remember { mutableStateOf<android.net.Uri?>(null) }
 
     val exportLauncher = rememberLauncherForActivityResult(
@@ -90,8 +97,8 @@ fun ProfileScreen(
     if (showImportDialog) {
         AlertDialog(
             onDismissRequest = { showImportDialog = false },
-            title = { Text("Import Data") },
-            text = { Text("Importing data may overwrite your existing data. Do you want to continue?") },
+            title = { Text(stringResource(R.string.import_data_title)) },
+            text = { Text(stringResource(R.string.import_data_msg)) },
             confirmButton = {
                 TextButton(onClick = {
                     showImportDialog = false
@@ -99,13 +106,24 @@ fun ProfileScreen(
                         viewModel.importData(context.contentResolver, it)
                     }
                 }) {
-                    Text("Continue")
+                    Text(stringResource(R.string.continue_btn))
                 }
             },
             dismissButton = {
                 TextButton(onClick = { showImportDialog = false }) {
-                    Text("Cancel")
+                    Text(stringResource(R.string.cancel_btn))
                 }
+            }
+        )
+    }
+
+    if (showLanguageDialog) {
+        LanguageSelectionDialog(
+            onDismiss = { showLanguageDialog = false },
+            onLanguageSelected = { languageCode ->
+                val appLocale: LocaleListCompat = LocaleListCompat.forLanguageTags(languageCode)
+                AppCompatDelegate.setApplicationLocales(appLocale)
+                showLanguageDialog = false
             }
         )
     }
@@ -163,7 +181,7 @@ fun ProfileScreen(
             if (user?.photoUrl != null) {
                 AsyncImage(
                     model = user?.photoUrl,
-                    contentDescription = "Profile Picture",
+                    contentDescription = stringResource(R.string.profile_pic_desc),
                     modifier = Modifier
                         .size(100.dp)
                         .clip(CircleShape),
@@ -188,7 +206,7 @@ fun ProfileScreen(
             Spacer(modifier = Modifier.height(16.dp))
 
             Text(
-                text = user?.displayName ?: "User",
+                text = user?.displayName ?: stringResource(R.string.default_user_name),
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color.Black
@@ -205,26 +223,27 @@ fun ProfileScreen(
             // Profile Options
             ProfileOptionItem(
                 icon = Icons.Default.Star,
-                title = "Get a Pro",
+                title = stringResource(R.string.get_pro_label),
                 iconColor = primaryAppColor,
                 onClick = onNavigateToPremium
             )
             
             Spacer(modifier = Modifier.height(12.dp))
             
+            val currentLanguage = AppCompatDelegate.getApplicationLocales()[0]?.displayLanguage ?: "English"
             ProfileOptionItem(
                 icon = Icons.Default.Language,
-                title = "Change Language",
-                trailingText = "English",
+                title = stringResource(R.string.change_language),
+                trailingText = currentLanguage,
                 iconColor = primaryAppColor,
-                onClick = {}
+                onClick = { showLanguageDialog = true }
             )
 
             Spacer(modifier = Modifier.height(12.dp))
 
             ProfileOptionItem(
                 icon = Icons.Default.FileDownload,
-                title = "Import Data",
+                title = stringResource(R.string.import_data_label),
                 iconColor = primaryAppColor,
                 onClick = {
                     importLauncher.launch(arrayOf("application/json"))
@@ -235,7 +254,7 @@ fun ProfileScreen(
 
             ProfileOptionItem(
                 icon = Icons.Default.FileUpload,
-                title = "Export Data",
+                title = stringResource(R.string.export_data_label),
                 iconColor = primaryAppColor,
                 onClick = {
                     exportLauncher.launch("recipe_vault_backup.json")
@@ -246,16 +265,27 @@ fun ProfileScreen(
 
             ProfileOptionItem(
                 icon = Icons.Default.Share,
-                title = "Share App",
+                title = stringResource(R.string.share_app),
                 iconColor = primaryAppColor,
-                onClick = {}
+                onClick = {
+                    val appPackageName = context.packageName
+                    val shareIntent = Intent(Intent.ACTION_SEND).apply {
+                        type = "text/plain"
+                        putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.app_name))
+                        putExtra(
+                            Intent.EXTRA_TEXT,
+                            "Check out this app: https://play.google.com/store/apps/details?id=$appPackageName"
+                        )
+                    }
+                    context.startActivity(Intent.createChooser(shareIntent, context.getString(R.string.share_app)))
+                }
             )
 
             Spacer(modifier = Modifier.height(12.dp))
 
             ProfileOptionItem(
                 icon = Icons.AutoMirrored.Filled.Logout,
-                title = "Logout",
+                title = stringResource(R.string.logout_label),
                 titleColor = Color(0xFFD32F2F),
                 iconColor = Color(0xFFD32F2F),
                 onClick = {
@@ -268,6 +298,53 @@ fun ProfileScreen(
             Spacer(modifier = Modifier.height(32.dp))
         }
     }
+}
+
+data class LanguageItem(val name: String, val code: String)
+
+val languageList = listOf(
+    LanguageItem("English", "en"),
+    LanguageItem("हिन्दी (Hindi)", "hi"),
+    LanguageItem("Español (Spanish)", "es"),
+    LanguageItem("Français (French)", "fr"),
+    LanguageItem("Deutsch (German)", "de"),
+    LanguageItem("Português (Portuguese)", "pt"),
+    LanguageItem("日本語 (Japanese)", "ja"),
+    LanguageItem("한국어 (Korean)", "ko"),
+    LanguageItem("中文 (Chinese)", "zh"),
+    LanguageItem("العربية (Arabic)", "ar"),
+    LanguageItem("Русский (Russian)", "ru")
+)
+
+@Composable
+fun LanguageSelectionDialog(
+    onDismiss: () -> Unit,
+    onLanguageSelected: (String) -> Unit
+) {
+    AlertDialog(
+        onDismissRequest = onDismiss,
+        title = { Text(text = stringResource(R.string.select_language)) },
+        text = {
+            LazyColumn(modifier = Modifier.fillMaxWidth()) {
+                items(languageList) { language ->
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { onLanguageSelected(language.code) }
+                            .padding(vertical = 12.dp, horizontal = 8.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(text = language.name, fontSize = 16.sp)
+                    }
+                }
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onDismiss) {
+                Text(text = stringResource(R.string.cancel))
+            }
+        }
+    )
 }
 
 @Composable

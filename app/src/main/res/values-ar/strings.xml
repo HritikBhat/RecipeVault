@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RecipeVault</string>
+    <string name="home_title">RecipeVault</string>
+    <string name="menu_desc">القائمة</string>
+    <string name="search_desc">بحث</string>
+    <string name="add_recipe_desc">إضافة وصفة</string>
+    <string name="search_placeholder">البحث عن وصفات، مكونات...</string>
+    <string name="your_culinary_haven">ملاذك للطهي</string>
+    <string name="empty_recipes">لم يتم العثور على وصفات. أضف وصفتك الأولى!</string>
+    <string name="search_empty">لا توجد وصفات تطابق بحثك.</string>
+    <string name="delete_recipe_title">حذف الوصفة</string>
+    <string name="delete_recipe_msg">هل أنت متأكد أنك تريد حذف \'%1$s\'؟</string>
+    <string name="nav_recipes">وصفات</string>
+    <string name="nav_collections">مجموعات</string>
+    <string name="nav_profile">الملف الشخصي</string>
+    <string name="add_recipe_title">إضافة وصفة</string>
+    <string name="edit_recipe_title">تعديل الوصفة</string>
+    <string name="manage_steps_title">إدارة الخطوات</string>
+    <string name="basic_info_label">معلومات أساسية</string>
+    <string name="recipe_name_label">اسم الوصفة</string>
+    <string name="recipe_name_placeholder">مثال: خبز العجين المخمر الريفي</string>
+    <string name="image_url_label">رابط الصورة</string>
+    <string name="time_label">الوقت (مثال: 1 ساعة 15 دقيقة)</string>
+    <string name="difficulty_label">الصعوبة</string>
+    <string name="category_label">الفئة</string>
+    <string name="category_placeholder">اختر فئة</string>
+    <string name="cover_image_label">صورة الغلاف (اختياري)</string>
+    <string name="tap_to_upload">انقر للتحميل</string>
+    <string name="ingredients_label">المكونات</string>
+    <string name="add_ingredient_btn">إضافة مكون</string>
+    <string name="steps_label">الخطوات</string>
+    <string name="add_step_btn">إضافة خطوة</string>
+    <string name="next_step_btn">الخطوة التالية</string>
+    <string name="save_recipe_btn">حفظ الوصفة</string>
+    <string name="confirm_btn">تأكيد</string>
+    <string name="cancel_btn">إلغاء</string>
+    <string name="edit_ingredient_title">تعديل المكون</string>
+    <string name="add_ingredient_title">إضافة مكون</string>
+    <string name="ingredient_name_label">اسم المكون</string>
+    <string name="save_btn">حفظ</string>
+    <string name="edit_step_title">تعديل خطوة الطهي</string>
+    <string name="add_step_title">إضافة خطوة طهي</string>
+    <string name="step_desc_label">وصف الخطوة</string>
+    <string name="back_desc">رجوع</string>
+    <string name="options_desc">خيارات</string>
+    <string name="edit_label">تعديل</string>
+    <string name="delete_label">حذف</string>
+    <string name="recipe_detail_title">تفاصيل الوصفة</string>
+    <string name="step_indicator_label">الخطوة %1$d</string>
+    <string name="error_msg">خطأ: %1$s</string>
+    <string name="ingredients_bullet">• %1$s</string>
+    <string name="step_label_with_index">الخطوة %1$d</string>
+    <string name="default_cooking_time">20 دقيقة</string>
+    <string name="default_difficulty">سهل</string>
+    <string name="step_prefix">الخطوة %1$d: %2$s</string>
+    <string name="default_unit">كمية</string>
+    <string name="quantity_label">الكمية</string>
+    <string name="unit_label">الوحدة</string>
+    <string name="all_category">الكل</string>
+    <string name="char_limit_format">%1$d / %2$d</string>
+    <string name="close_desc">إغلاق</string>
+    <string name="more_options_desc">المزيد من الخيارات</string>
+    <string name="finish_cooking_btn">إنهاء الطهي</string>
+
+    <!-- Image Selection -->
+    <string name="select_image_title">اختر صورة</string>
+    <string name="gallery_option">المعرض</string>
+    <string name="camera_option">الكاميرا</string>
+    <string name="camera_permission_denied">مطلوب إذن الكاميرا لالتقاط الصور.</string>
+
+    <!-- Validation Errors -->
+    <string name="err_empty_name">لا يمكن أن يكون اسم الوصفة فارغاً</string>
+    <string name="err_no_ingredients">يرجى إضافة مكون واحد على الأقل</string>
+    <string name="err_no_steps">يرجى إضافة خطوة واحدة على الأقل</string>
+
+    <!-- Collections -->
+    <string name="collection_label">مجموعة</string>
+    <string name="add_collection_btn">إضافة مجموعة</string>
+    <string name="select_collection_placeholder">اختر مجموعة</string>
+    <string name="add_new_collection_btn">إضافة مجموعة جديدة</string>
+    <string name="manage_collections_title">إدارة الفئات</string>
+    <string name="add_collection_placeholder">إضافة فئة جديدة...</string>
+    <string name="existing_collections_label">الفئات الموجودة</string>
+    <string name="delete_collection_title">حذف الفئة</string>
+    <string name="delete_collection_msg">هل أنت متأكد أنك تريد حذف هذه الفئة؟</string>
+    <string name="edit_collection_title">تعديل الفئة</string>
+    <string name="collection_name_label">اسم الفئة</string>
+    <string name="empty_collections">لم يتم العثور على مجموعات. أضف مجموعتك الأولى!</string>
+    <string name="search_collections_placeholder">البحث عن فئات...</string>
+    <string name="add_collection_title">إضافة مجموعة</string>
+    <string name="collection_name_hint">اسم المجموعة</string>
+
+    <!-- Authentication -->
+    <string name="login_welcome_title">مرحباً بك في Culinary Haven</string>
+    <string name="login_welcome_subtitle">مجموعتك الشخصية من\nوصفات الحرفيين.</string>
+    <string name="continue_with_google">المتابعة باستخدام Google</string>
+    <string name="copyright_text">© 2024 Culinary Haven. مستوحى من التقاليد.</string>
+    <string name="err_context_not_activity">السياق ليس نشاطاً</string>
+    <string name="err_no_google_accounts">لم يتم العثور على حسابات Google. يرجى التأكد من تسجيل SHA-1 في Firebase.</string>
+    <string name="err_signin_failed">فشل تسجيل الدخول: %1$s</string>
+
+    <!-- Premium -->
+    <string name="premium_title">ترقية بريميوم</string>
+    <string name="premium_desc">افتح جميع الوصفات، وأزل الإعلانات، ومزامنة بياناتك عبر الأجهزة للأبد.</string>
+    <string name="buy_premium">الترقية إلى Pro</string>
+    <string name="restore_purchase">استعادة المشتريات</string>
+    <string name="premium_success">مرحباً بك في بريميوم!</string>
+    <string name="premium_active">عضوية بريميوم نشطة</string>
+    <string name="confirm_account_title">تأكيد الحساب</string>
+    <string name="confirm_account_msg">سيتم ربط عملية الشراء الخاصة بك بـ: %1$s</string>
+    <string name="pro_member_status">أنت عضو Pro</string>
+    <string name="unknown_account">حساب غير معروف</string>
+
+    <!-- Profile -->
+    <string name="profile_pic_desc">صورة الملف الشخصي</string>
+    <string name="default_user_name">مستخدم</string>
+    <string name="get_pro_label">احصل على Pro</string>
+    <string name="import_data_label">استيراد البيانات</string>
+    <string name="export_data_label">تصدير البيانات</string>
+    <string name="logout_label">تسجيل الخروج</string>
+    <string name="import_data_title">استيراد البيانات</string>
+    <string name="import_data_msg">قد يؤدي استيراد البيانات إلى الكتابة فوق بياناتك الحالية. هل ترغب في الاستمرار؟</string>
+    <string name="continue_btn">استمرار</string>
+
+    <!-- Settings -->
+    <string name="change_language">تغيير اللغة</string>
+    <string name="select_language">اختر اللغة</string>
+    <string name="share_app">مشاركة التطبيق</string>
+    <string name="cancel">إلغاء</string>
+</resources>

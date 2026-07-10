@@ -87,9 +87,18 @@
     <string name="collection_name_label">Category Name</string>
     <string name="empty_collections">No collections found. Add your first one!</string>
     <string name="search_collections_placeholder">Search categories...</string>
+    <string name="add_collection_title">Add Collection</string>
+    <string name="collection_name_hint">Collection Name</string>
 
     <!-- Authentication -->
     <string name="default_web_client_id">1033260034785-mn7uefltkvohro5ok2tp0qeaf7rgn5if.apps.googleusercontent.com</string>
+    <string name="login_welcome_title">Welcome to Culinary Haven</string>
+    <string name="login_welcome_subtitle">Your personal collection of\nartisanal recipes.</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="copyright_text">© 2024 Culinary Haven. Inspired by tradition.</string>
+    <string name="err_context_not_activity">Context is not an Activity</string>
+    <string name="err_no_google_accounts">No Google accounts found. Please ensure your SHA-1 is registered in Firebase.</string>
+    <string name="err_signin_failed">Sign in failed: %1$s</string>
 
     <!-- Premium -->
     <string name="premium_title">Premium Upgrade</string>
@@ -100,4 +109,23 @@
     <string name="premium_active">Premium Membership Active</string>
     <string name="confirm_account_title">Confirm Account</string>
     <string name="confirm_account_msg">Your purchase will be linked to: %1$s</string>
+    <string name="pro_member_status">You are a Pro Member</string>
+    <string name="unknown_account">Unknown Account</string>
+
+    <!-- Profile -->
+    <string name="profile_pic_desc">Profile Picture</string>
+    <string name="default_user_name">User</string>
+    <string name="get_pro_label">Get a Pro</string>
+    <string name="import_data_label">Import Data</string>
+    <string name="export_data_label">Export Data</string>
+    <string name="logout_label">Logout</string>
+    <string name="import_data_title">Import Data</string>
+    <string name="import_data_msg">Importing data may overwrite your existing data. Do you want to continue?</string>
+    <string name="continue_btn">Continue</string>
+
+    <!-- Settings -->
+    <string name="change_language">Change Language</string>
+    <string name="select_language">Select Language</string>
+    <string name="share_app">Share App</string>
+    <string name="cancel">Cancel</string>
 </resources>

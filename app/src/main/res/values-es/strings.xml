@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RecipeVault</string>
+    <string name="home_title">RecipeVault</string>
+    <string name="menu_desc">Menú</string>
+    <string name="search_desc">Buscar</string>
+    <string name="add_recipe_desc">Añadir receta</string>
+    <string name="search_placeholder">Buscar recetas, ingredientes...</string>
+    <string name="your_culinary_haven">Tu refugio culinario</string>
+    <string name="empty_recipes">No se han encontrado recetas. ¡Añade la primera!</string>
+    <string name="search_empty">No hay recetas que coincidan con tu búsqueda.</string>
+    <string name="delete_recipe_title">Eliminar receta</string>
+    <string name="delete_recipe_msg">¿Estás seguro de que quieres eliminar \'%1$s\'?</string>
+    <string name="nav_recipes">Recetas</string>
+    <string name="nav_collections">Colecciones</string>
+    <string name="nav_profile">Perfil</string>
+    <string name="add_recipe_title">Añadir receta</string>
+    <string name="edit_recipe_title">Editar receta</string>
+    <string name="manage_steps_title">Gestionar pasos</string>
+    <string name="basic_info_label">Información básica</string>
+    <string name="recipe_name_label">Nombre de la receta</string>
+    <string name="recipe_name_placeholder">ej., Pan de masa madre rústico</string>
+    <string name="image_url_label">URL de la imagen</string>
+    <string name="time_label">Tiempo (ej. 1h 15m)</string>
+    <string name="difficulty_label">Dificultad</string>
+    <string name="category_label">Categoría</string>
+    <string name="category_placeholder">Selecciona una categoría</string>
+    <string name="cover_image_label">Imagen de portada (Opcional)</string>
+    <string name="tap_to_upload">Toca para subir</string>
+    <string name="ingredients_label">Ingredientes</string>
+    <string name="add_ingredient_btn">Añadir ingrediente</string>
+    <string name="steps_label">Pasos</string>
+    <string name="add_step_btn">Añadir paso</string>
+    <string name="next_step_btn">Siguiente paso</string>
+    <string name="save_recipe_btn">Guardar receta</string>
+    <string name="confirm_btn">Confirmar</string>
+    <string name="cancel_btn">Cancelar</string>
+    <string name="edit_ingredient_title">Editar ingrediente</string>
+    <string name="add_ingredient_title">Añadir ingrediente</string>
+    <string name="ingredient_name_label">Nombre del ingrediente</string>
+    <string name="save_btn">Guardar</string>
+    <string name="edit_step_title">Editar paso de cocina</string>
+    <string name="add_step_title">Añadir paso de cocina</string>
+    <string name="step_desc_label">Descripción del paso</string>
+    <string name="back_desc">Atrás</string>
+    <string name="options_desc">Opciones</string>
+    <string name="edit_label">Editar</string>
+    <string name="delete_label">Eliminar</string>
+    <string name="recipe_detail_title">Detalles de la receta</string>
+    <string name="step_indicator_label">Paso %1$d</string>
+    <string name="error_msg">Error: %1$s</string>
+    <string name="ingredients_bullet">• %1$s</string>
+    <string name="step_label_with_index">Paso %1$d</string>
+    <string name="default_cooking_time">20m</string>
+    <string name="default_difficulty">Fácil</string>
+    <string name="step_prefix">Paso %1$d: %2$s</string>
+    <string name="default_unit">ctdad</string>
+    <string name="quantity_label">Cantidad</string>
+    <string name="unit_label">Unidad</string>
+    <string name="all_category">Todo</string>
+    <string name="char_limit_format">%1$d / %2$d</string>
+    <string name="close_desc">Cerrar</string>
+    <string name="more_options_desc">Más opciones</string>
+    <string name="finish_cooking_btn">Terminar de cocinar</string>
+
+    <!-- Image Selection -->
+    <string name="select_image_title">Seleccionar imagen</string>
+    <string name="gallery_option">Galería</string>
+    <string name="camera_option">Cámara</string>
+    <string name="camera_permission_denied">Se requiere permiso de cámara para tomar fotos.</string>
+
+    <!-- Validation Errors -->
+    <string name="err_empty_name">El nombre de la receta no puede estar vacío</string>
+    <string name="err_no_ingredients">Por favor, añade al menos un ingrediente</string>
+    <string name="err_no_steps">Por favor, añade al menos un paso</string>
+
+    <!-- Collections -->
+    <string name="collection_label">Colección</string>
+    <string name="add_collection_btn">Añadir colección</string>
+    <string name="select_collection_placeholder">Selecciona una colección</string>
+    <string name="add_new_collection_btn">Añadir nueva colección</string>
+    <string name="manage_collections_title">Gestionar categorías</string>
+    <string name="add_collection_placeholder">Añadir nueva categoría...</string>
+    <string name="existing_collections_label">CATEGORÍAS EXISTENTES</string>
+    <string name="delete_collection_title">Eliminar categoría</string>
+    <string name="delete_collection_msg">¿Estás seguro de que quieres eliminar esta categoría?</string>
+    <string name="edit_collection_title">Editar categoría</string>
+    <string name="collection_name_label">Nombre de la categoría</string>
+    <string name="empty_collections">No se han encontrado colecciones. ¡Añade la primera!</string>
+    <string name="search_collections_placeholder">Buscar categorías...</string>
+    <string name="add_collection_title">Añadir colección</string>
+    <string name="collection_name_hint">Nombre de la colección</string>
+
+    <!-- Authentication -->
+    <string name="login_welcome_title">Bienvenido a Culinary Haven</string>
+    <string name="login_welcome_subtitle">Tu colección personal de\nrecetas artesanales.</string>
+    <string name="continue_with_google">Continuar con Google</string>
+    <string name="copyright_text">© 2024 Culinary Haven. Inspirado por la tradición.</string>
+    <string name="err_context_not_activity">El contexto no es una Actividad</string>
+    <string name="err_no_google_accounts">No se encontraron cuentas de Google. Por favor, asegúrate de que tu SHA-1 esté registrado en Firebase.</string>
+    <string name="err_signin_failed">Error al iniciar sesión: %1$s</string>
+
+    <!-- Premium -->
+    <string name="premium_title">Mejora a Premium</string>
+    <string name="premium_desc">Desbloquea todas las recetas, elimina anuncios y sincroniza tus datos entre dispositivos para siempre.</string>
+    <string name="buy_premium">Mejorar a Pro</string>
+    <string name="restore_purchase">Restaurar compra</string>
+    <string name="premium_success">¡Bienvenido a Premium!</string>
+    <string name="premium_active">Membresía Premium activa</string>
+    <string name="confirm_account_title">Confirmar cuenta</string>
+    <string name="confirm_account_msg">Tu compra se vinculará a: %1$s</string>
+    <string name="pro_member_status">Eres miembro Pro</string>
+    <string name="unknown_account">Cuenta desconocida</string>
+
+    <!-- Profile -->
+    <string name="profile_pic_desc">Foto de perfil</string>
+    <string name="default_user_name">Usuario</string>
+    <string name="get_pro_label">Obtener Pro</string>
+    <string name="import_data_label">Importar datos</string>
+    <string name="export_data_label">Exportar datos</string>
+    <string name="logout_label">Cerrar sesión</string>
+    <string name="import_data_title">Importar datos</string>
+    <string name="import_data_msg">Importar datos puede sobrescribir tus datos existentes. ¿Deseas continuar?</string>
+    <string name="continue_btn">Continuar</string>
+
+    <!-- Settings -->
+    <string name="change_language">Cambiar idioma</string>
+    <string name="select_language">Seleccionar idioma</string>
+    <string name="share_app">Compartir aplicación</string>
+    <string name="cancel">Cancelar</string>
+</resources>

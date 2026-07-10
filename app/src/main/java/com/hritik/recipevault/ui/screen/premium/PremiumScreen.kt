@@ -64,7 +64,7 @@ fun PremiumScreen(
                 Text(
                     text = stringResource(
                         R.string.confirm_account_msg, 
-                        viewModel.currentUserEmail ?: "Unknown Account"
+                        viewModel.currentUserEmail ?: stringResource(R.string.unknown_account)
                     )
                 ) 
             },
@@ -169,7 +169,7 @@ fun PremiumScreen(
                         modifier = Modifier.size(48.dp)
                     )
                     Text(
-                        text = "You are a Pro Member",
+                        text = stringResource(R.string.pro_member_status),
                         fontWeight = FontWeight.Medium,
                         color = brownColor
                     )

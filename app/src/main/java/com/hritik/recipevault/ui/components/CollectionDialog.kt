@@ -24,7 +24,7 @@ fun CollectionDialog(
         onDismissRequest = onDismiss,
         title = {
             Text(
-                text = if (initialName.isEmpty()) "Add Collection" else "Edit Collection",
+                text = if (initialName.isEmpty()) stringResource(R.string.add_collection_title) else stringResource(R.string.edit_collection_title),
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF5D4037)
             )
@@ -34,7 +34,7 @@ fun CollectionDialog(
                 OutlinedTextField(
                     value = name,
                     onValueChange = { name = it },
-                    label = { Text("Collection Name") },
+                    label = { Text(stringResource(R.string.collection_name_label)) },
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
                     colors = OutlinedTextFieldDefaults.colors(

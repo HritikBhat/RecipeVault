@@ -73,7 +73,7 @@ fun CollectionScreen(
                 contentColor = Color.White,
                 shape = RoundedCornerShape(16.dp)
             ) {
-                Icon(Icons.Default.Add, contentDescription = "Add Collection")
+                Icon(Icons.Default.Add, contentDescription = stringResource(R.string.add_collection_btn))
             }
         },
         bottomBar = {
@@ -213,7 +213,7 @@ fun CollectionItem(
             IconButton(onClick = onDelete) {
                 Icon(
                     imageVector = Icons.Outlined.Delete,
-                    contentDescription = null,
+                    contentDescription = stringResource(R.string.delete_label),
                     tint = Color.Gray.copy(alpha = 0.6f)
                 )
             }
@@ -233,7 +233,7 @@ fun CollectionDialog(
         onDismissRequest = onDismiss,
         title = {
             Text(
-                text = if (initialName.isEmpty()) "Add Collection" else "Edit Collection",
+                text = if (initialName.isEmpty()) stringResource(R.string.add_collection_title) else stringResource(R.string.edit_collection_title),
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF5D4037)
             )
@@ -243,7 +243,7 @@ fun CollectionDialog(
                 OutlinedTextField(
                     value = name,
                     onValueChange = { name = it },
-                    label = { Text("Collection Name") },
+                    label = { Text(stringResource(R.string.collection_name_label)) },
                     modifier = Modifier.fillMaxWidth(),
                     shape = RoundedCornerShape(12.dp),
                     colors = OutlinedTextFieldDefaults.colors(

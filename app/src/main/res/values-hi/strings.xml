@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">रेसिपीवॉल्ट</string>
+    <string name="home_title">रेसिपीवॉल्ट</string>
+    <string name="menu_desc">मेनू</string>
+    <string name="search_desc">खोजें</string>
+    <string name="add_recipe_desc">रेसिपी जोड़ें</string>
+    <string name="search_placeholder">रेसिपी, सामग्री खोजें...</string>
+    <string name="your_culinary_haven">आपका पाक स्वर्ग</string>
+    <string name="empty_recipes">कोई रेसिपी नहीं मिली। अपनी पहली रेसिपी जोड़ें!</string>
+    <string name="search_empty">आपकी खोज से कोई रेसिपी मेल नहीं खाती।</string>
+    <string name="delete_recipe_title">रेसिपी हटाएं</string>
+    <string name="delete_recipe_msg">क्या आप वाकई \'%1$s\' को हटाना चाहते हैं?</string>
+    <string name="nav_recipes">रेसिपी</string>
+    <string name="nav_collections">संग्रह</string>
+    <string name="nav_profile">प्रोफ़ाइल</string>
+    <string name="add_recipe_title">रेसिपी जोड़ें</string>
+    <string name="edit_recipe_title">रेसिपी संपादित करें</string>
+    <string name="manage_steps_title">चरणों का प्रबंधन करें</string>
+    <string name="basic_info_label">मूल जानकारी</string>
+    <string name="recipe_name_label">रेसिपी का नाम</string>
+    <string name="recipe_name_placeholder">जैसे, रस्टिक सॉर्डो ब्रेड</string>
+    <string name="image_url_label">छवि URL</string>
+    <string name="time_label">समय (जैसे 1h 15m)</string>
+    <string name="difficulty_label">कठिनाई</string>
+    <string name="category_label">श्रेणी</string>
+    <string name="category_placeholder">एक श्रेणी चुनें</string>
+    <string name="cover_image_label">कवर इमेज (वैकल्पिक)</string>
+    <string name="tap_to_upload">अपलोड करने के लिए टैप करें</string>
+    <string name="ingredients_label">सामग्री</string>
+    <string name="add_ingredient_btn">सामग्री जोड़ें</string>
+    <string name="steps_label">चरण</string>
+    <string name="add_step_btn">चरण जोड़ें</string>
+    <string name="next_step_btn">अगला चरण</string>
+    <string name="save_recipe_btn">रेसिपी सहेजें</string>
+    <string name="confirm_btn">पुष्टि करें</string>
+    <string name="cancel_btn">रद्द करें</string>
+    <string name="edit_ingredient_title">सामग्री संपादित करें</string>
+    <string name="add_ingredient_title">सामग्री जोड़ें</string>
+    <string name="ingredient_name_label">सामग्री का नाम</string>
+    <string name="save_btn">सहेजें</string>
+    <string name="edit_step_title">खाना पकाने का चरण संपादित करें</string>
+    <string name="add_step_title">खाना पकाने का चरण जोड़ें</string>
+    <string name="step_desc_label">चरण विवरण</string>
+    <string name="back_desc">पीछे</string>
+    <string name="options_desc">विकल्प</string>
+    <string name="edit_label">संपादित करें</string>
+    <string name="delete_label">हटाएं</string>
+    <string name="recipe_detail_title">रेसिपी विवरण</string>
+    <string name="step_indicator_label">चरण %1$d</string>
+    <string name="error_msg">त्रुटि: %1$s</string>
+    <string name="ingredients_bullet">• %1$s</string>
+    <string name="step_label_with_index">चरण %1$d</string>
+    <string name="default_cooking_time">20 मिनट</string>
+    <string name="default_difficulty">आसान</string>
+    <string name="step_prefix">चरण %1$d: %2$s</string>
+    <string name="default_unit">मात्रा</string>
+    <string name="quantity_label">मात्रा</string>
+    <string name="unit_label">इकाई</string>
+    <string name="all_category">सभी</string>
+    <string name="char_limit_format">%1$d / %2$d</string>
+    <string name="close_desc">बंद करें</string>
+    <string name="more_options_desc">अधिक विकल्प</string>
+    <string name="finish_cooking_btn">खाना पकाना समाप्त करें</string>
+
+    <!-- Image Selection -->
+    <string name="select_image_title">छवि चुनें</string>
+    <string name="gallery_option">गैलरी</string>
+    <string name="camera_option">कैमरा</string>
+    <string name="camera_permission_denied">चित्र लेने के लिए कैमरा अनुमति आवश्यक है।</string>
+
+    <!-- Validation Errors -->
+    <string name="err_empty_name">रेसिपी का नाम खाली नहीं हो सकता</string>
+    <string name="err_no_ingredients">कृपया कम से कम एक सामग्री जोड़ें</string>
+    <string name="err_no_steps">कृपया कम से कम एक चरण जोड़ें</string>
+
+    <!-- Collections -->
+    <string name="collection_label">संग्रह</string>
+    <string name="add_collection_btn">संग्रह जोड़ें</string>
+    <string name="select_collection_placeholder">एक संग्रह चुनें</string>
+    <string name="add_new_collection_btn">नया संग्रह जोड़ें</string>
+    <string name="manage_collections_title">श्रेणियां प्रबंधित करें</string>
+    <string name="add_collection_placeholder">नई श्रेणी जोड़ें...</string>
+    <string name="existing_collections_label">मौजूदा श्रेणियां</string>
+    <string name="delete_collection_title">श्रेणी हटाएं</string>
+    <string name="delete_collection_msg">क्या आप वाकई इस श्रेणी को हटाना चाहते हैं?</string>
+    <string name="edit_collection_title">श्रेणी संपादित करें</string>
+    <string name="collection_name_label">श्रेणी का नाम</string>
+    <string name="empty_collections">कोई संग्रह नहीं मिला। अपना पहला जोड़ें!</string>
+    <string name="search_collections_placeholder">श्रेणियां खोजें...</string>
+    <string name="add_collection_title">संग्रह जोड़ें</string>
+    <string name="collection_name_hint">संग्रह का नाम</string>
+
+    <!-- Authentication -->
+    <string name="login_welcome_title">कुलिनरी हेवन में आपका स्वागत है</string>
+    <string name="login_welcome_subtitle">आपका व्यक्तिगत शिल्प रेसिपी संग्रह।</string>
+    <string name="continue_with_google">गूगल के साथ जारी रखें</string>
+    <string name="copyright_text">© 2024 कुलिनरी हेवन। परंपरा से प्रेरित।</string>
+    <string name="err_context_not_activity">संदर्भ एक एक्टिविटी नहीं है</string>
+    <string name="err_no_google_accounts">कोई गूगल खाता नहीं मिला। कृपया सुनिश्चित करें कि आपका SHA-1 फायरबेस में पंजीकृत है।</string>
+    <string name="err_signin_failed">साइन इन विफल रहा: %1$s</string>
+
+    <!-- Premium -->
+    <string name="premium_title">प्रीमियम अपग्रेड</string>
+    <string name="premium_desc">सभी रेसिपी अनलॉक करें, विज्ञापन हटाएं, और अपने डेटा को हमेशा के लिए डिवाइसों में सिंक करें।</string>
+    <string name="buy_premium">प्रो में अपग्रेड करें</string>
+    <string name="restore_purchase">खरीद बहाल करें</string>
+    <string name="premium_success">प्रीमियम में आपका स्वागत है!</string>
+    <string name="premium_active">प्रीमियम सदस्यता सक्रिय</string>
+    <string name="confirm_account_title">खाते की पुष्टि करें</string>
+    <string name="confirm_account_msg">आपकी खरीदारी इससे जुड़ी होगी: %1$s</string>
+    <string name="pro_member_status">आप एक प्रो सदस्य हैं</string>
+    <string name="unknown_account">अज्ञात खाता</string>
+
+    <!-- Profile -->
+    <string name="profile_pic_desc">प्रोफ़ाइल चित्र</string>
+    <string name="default_user_name">उपयोगकर्ता</string>
+    <string name="get_pro_label">प्रो प्राप्त करें</string>
+    <string name="import_data_label">डेटा आयात करें</string>
+    <string name="export_data_label">डेटा निर्यात करें</string>
+    <string name="logout_label">लॉगआउट</string>
+    <string name="import_data_title">डेटा आयात करें</string>
+    <string name="import_data_msg">डेटा आयात करने से आपका मौजूदा डेटा ओवरराइट हो सकता है। क्या आप जारी रखना चाहते हैं?</string>
+    <string name="continue_btn">जारी रखें</string>
+
+    <!-- Settings -->
+    <string name="change_language">भाषा बदलें</string>
+    <string name="select_language">भाषा चुनें</string>
+    <string name="share_app">ऐप साझा करें</string>
+    <string name="cancel">रद्द करें</string>
+</resources>

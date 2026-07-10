@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RecipeVault</string>
+    <string name="home_title">RecipeVault</string>
+    <string name="menu_desc">Меню</string>
+    <string name="search_desc">Поиск</string>
+    <string name="add_recipe_desc">Добавить рецепт</string>
+    <string name="search_placeholder">Поиск рецептов, ингредиентов...</string>
+    <string name="your_culinary_haven">Ваша кулинарная обитель</string>
+    <string name="empty_recipes">Рецепты не найдены. Добавьте свой первый рецепт!</string>
+    <string name="search_empty">По вашему запросу ничего не найдено.</string>
+    <string name="delete_recipe_title">Удалить рецепт</string>
+    <string name="delete_recipe_msg">Вы уверены, что хотите удалить \'%1$s\'?</string>
+    <string name="nav_recipes">Рецепты</string>
+    <string name="nav_collections">Коллекции</string>
+    <string name="nav_profile">Профиль</string>
+    <string name="add_recipe_title">Добавить рецепт</string>
+    <string name="edit_recipe_title">Изменить рецепт</string>
+    <string name="manage_steps_title">Управление шагами</string>
+    <string name="basic_info_label">Основная информация</string>
+    <string name="recipe_name_label">Название рецепта</string>
+    <string name="recipe_name_placeholder">например, Рустикальный хлеб на закваске</string>
+    <string name="image_url_label">URL изображения</string>
+    <string name="time_label">Время (например, 1ч 15м)</string>
+    <string name="difficulty_label">Сложность</string>
+    <string name="category_label">Категория</string>
+    <string name="category_placeholder">Выберите категорию</string>
+    <string name="cover_image_label">Обложка (необязательно)</string>
+    <string name="tap_to_upload">Нажмите, чтобы загрузить</string>
+    <string name="ingredients_label">Ингредиенты</string>
+    <string name="add_ingredient_btn">Добавить ингредиент</string>
+    <string name="steps_label">Шаги</string>
+    <string name="add_step_btn">Добавить шаг</string>
+    <string name="next_step_btn">Следующий шаг</string>
+    <string name="save_recipe_btn">Сохранить рецепт</string>
+    <string name="confirm_btn">Подтвердить</string>
+    <string name="cancel_btn">Отмена</string>
+    <string name="edit_ingredient_title">Изменить ингредиент</string>
+    <string name="add_ingredient_title">Добавить ингредиент</string>
+    <string name="ingredient_name_label">Название ингредиента</string>
+    <string name="save_btn">Сохранить</string>
+    <string name="edit_step_title">Изменить шаг приготовления</string>
+    <string name="add_step_title">Добавить шаг приготовления</string>
+    <string name="step_desc_label">Описание шага</string>
+    <string name="back_desc">Назад</string>
+    <string name="options_desc">Опции</string>
+    <string name="edit_label">Изменить</string>
+    <string name="delete_label">Удалить</string>
+    <string name="recipe_detail_title">Детали рецепта</string>
+    <string name="step_indicator_label">Шаг %1$d</string>
+    <string name="error_msg">Ошибка: %1$s</string>
+    <string name="ingredients_bullet">• %1$s</string>
+    <string name="step_label_with_index">Шаг %1$d</string>
+    <string name="default_cooking_time">20 мин</string>
+    <string name="default_difficulty">Легко</string>
+    <string name="step_prefix">Шаг %1$d: %2$s</string>
+    <string name="default_unit">кол-во</string>
+    <string name="quantity_label">Количество</string>
+    <string name="unit_label">Единица измерения</string>
+    <string name="all_category">Все</string>
+    <string name="char_limit_format">%1$d / %2$d</string>
+    <string name="close_desc">Закрыть</string>
+    <string name="more_options_desc">Дополнительно</string>
+    <string name="finish_cooking_btn">Завершить приготовление</string>
+
+    <!-- Image Selection -->
+    <string name="select_image_title">Выбрать изображение</string>
+    <string name="gallery_option">Галерея</string>
+    <string name="camera_option">Камера</string>
+    <string name="camera_permission_denied">Для фотосъемки требуется разрешение на использование камеры.</string>
+
+    <!-- Validation Errors -->
+    <string name="err_empty_name">Название рецепта не может быть пустым</string>
+    <string name="err_no_ingredients">Пожалуйста, добавьте хотя бы один ингредиент</string>
+    <string name="err_no_steps">Пожалуйста, добавьте хотя бы один шаг</string>
+
+    <!-- Collections -->
+    <string name="collection_label">Коллекция</string>
+    <string name="add_collection_btn">Добавить коллекцию</string>
+    <string name="select_collection_placeholder">Выберите коллекцию</string>
+    <string name="add_new_collection_btn">Добавить новую коллекцию</string>
+    <string name="manage_collections_title">Управление категориями</string>
+    <string name="add_collection_placeholder">Добавить новую категорию...</string>
+    <string name="existing_collections_label">СУЩЕСТВУЮЩИЕ КАТЕГОРИИ</string>
+    <string name="delete_collection_title">Удалить категорию</string>
+    <string name="delete_collection_msg">Вы уверены, что хотите удалить эту категорию?</string>
+    <string name="edit_collection_title">Изменить категорию</string>
+    <string name="collection_name_label">Название категории</string>
+    <string name="empty_collections">Коллекции не найдены. Добавьте свою первую коллекцию!</string>
+    <string name="search_collections_placeholder">Поиск категорий...</string>
+    <string name="add_collection_title">Добавить коллекцию</string>
+    <string name="collection_name_hint">Название коллекции</string>
+
+    <!-- Authentication -->
+    <string name="login_welcome_title">Добро пожаловать в Culinary Haven</string>
+    <string name="login_welcome_subtitle">Ваша личная коллекция\nкрафтовых рецептов.</string>
+    <string name="continue_with_google">Продолжить через Google</string>
+    <string name="copyright_text">© 2024 Culinary Haven. Вдохновлено традициями.</string>
+    <string name="err_context_not_activity">Контекст не является Activity</string>
+    <string name="err_no_google_accounts">Аккаунты Google не найдены. Убедитесь, что ваш SHA-1 зарегистрирован в Firebase.</string>
+    <string name="err_signin_failed">Ошибка входа: %1$s</string>
+
+    <!-- Premium -->
+    <string name="premium_title">Обновление до Premium</string>
+    <string name="premium_desc">Разблокируйте все рецепты, удалите рекламу и синхронизируйте свои данные между устройствами навсегда.</string>
+    <string name="buy_premium">Обновить до Pro</string>
+    <string name="restore_purchase">Восстановить покупку</string>
+    <string name="premium_success">Добро пожаловать в Premium!</string>
+    <string name="premium_active">Premium-подписка активна</string>
+    <string name="confirm_account_title">Подтвердите аккаунт</string>
+    <string name="confirm_account_msg">Ваша покупка будет привязана к: %1$s</string>
+    <string name="pro_member_status">Вы являетесь Pro-участником</string>
+    <string name="unknown_account">Неизвестный аккаунт</string>
+
+    <!-- Profile -->
+    <string name="profile_pic_desc">Фото профиля</string>
+    <string name="default_user_name">Пользователь</string>
+    <string name="get_pro_label">Получить Pro</string>
+    <string name="import_data_label">Импорт данных</string>
+    <string name="export_data_label">Экспорт данных</string>
+    <string name="logout_label">Выйти</string>
+    <string name="import_data_title">Импорт данных</string>
+    <string name="import_data_msg">Импорт данных может перезаписать существующие данные. Вы хотите продолжить?</string>
+    <string name="continue_btn">Продолжить</string>
+
+    <!-- Settings -->
+    <string name="change_language">Сменить язык</string>
+    <string name="select_language">Выберите язык</string>
+    <string name="share_app">Поделиться приложением</string>
+    <string name="cancel">Отмена</string>
+</resources>

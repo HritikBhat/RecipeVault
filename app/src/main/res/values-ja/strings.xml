@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RecipeVault</string>
+    <string name="home_title">RecipeVault</string>
+    <string name="menu_desc">メニュー</string>
+    <string name="search_desc">検索</string>
+    <string name="add_recipe_desc">レシピを追加</string>
+    <string name="search_placeholder">レシピ、材料を検索...</string>
+    <string name="your_culinary_haven">あなたの料理の隠れ家</string>
+    <string name="empty_recipes">レシピが見つかりません。最初のレシピを追加しましょう！</string>
+    <string name="search_empty">検索条件に一致するレシピはありません。</string>
+    <string name="delete_recipe_title">レシピを削除</string>
+    <string name="delete_recipe_msg">\'%1$s\' を削除してもよろしいですか？</string>
+    <string name="nav_recipes">レシピ</string>
+    <string name="nav_collections">コレクション</string>
+    <string name="nav_profile">プロフィール</string>
+    <string name="add_recipe_title">レシピを追加</string>
+    <string name="edit_recipe_title">レシピを編集</string>
+    <string name="manage_steps_title">手順を管理</string>
+    <string name="basic_info_label">基本情報</string>
+    <string name="recipe_name_label">レシピ名</string>
+    <string name="recipe_name_placeholder">例：素朴なサワードウブレッド</string>
+    <string name="image_url_label">画像URL</string>
+    <string name="time_label">時間 (例: 1h 15m)</string>
+    <string name="difficulty_label">難易度</string>
+    <string name="category_label">カテゴリー</string>
+    <string name="category_placeholder">カテゴリーを選択</string>
+    <string name="cover_image_label">カバー画像 (任意)</string>
+    <string name="tap_to_upload">タップしてアップロード</string>
+    <string name="ingredients_label">材料</string>
+    <string name="add_ingredient_btn">材料を追加</string>
+    <string name="steps_label">手順</string>
+    <string name="add_step_btn">手順を追加</string>
+    <string name="next_step_btn">次のステップ</string>
+    <string name="save_recipe_btn">レシピを保存</string>
+    <string name="confirm_btn">確認</string>
+    <string name="cancel_btn">キャンセル</string>
+    <string name="edit_ingredient_title">材料を編集</string>
+    <string name="add_ingredient_title">材料を追加</string>
+    <string name="ingredient_name_label">材料名</string>
+    <string name="save_btn">保存</string>
+    <string name="edit_step_title">調理手順を編集</string>
+    <string name="add_step_title">調理手順を追加</string>
+    <string name="step_desc_label">手順の説明</string>
+    <string name="back_desc">戻る</string>
+    <string name="options_desc">オプション</string>
+    <string name="edit_label">編集</string>
+    <string name="delete_label">削除</string>
+    <string name="recipe_detail_title">レシピの詳細</string>
+    <string name="step_indicator_label">ステップ %1$d</string>
+    <string name="error_msg">エラー: %1$s</string>
+    <string name="ingredients_bullet">• %1$s</string>
+    <string name="step_label_with_index">ステップ %1$d</string>
+    <string name="default_cooking_time">20分</string>
+    <string name="default_difficulty">簡単</string>
+    <string name="step_prefix">ステップ %1$d: %2$s</string>
+    <string name="default_unit">分量</string>
+    <string name="quantity_label">分量</string>
+    <string name="unit_label">単位</string>
+    <string name="all_category">すべて</string>
+    <string name="char_limit_format">%1$d / %2$d</string>
+    <string name="close_desc">閉じる</string>
+    <string name="more_options_desc">その他のオプション</string>
+    <string name="finish_cooking_btn">調理を終了</string>
+
+    <!-- Image Selection -->
+    <string name="select_image_title">画像を選択</string>
+    <string name="gallery_option">ギャラリー</string>
+    <string name="camera_option">カメラ</string>
+    <string name="camera_permission_denied">写真を撮るにはカメラの権限が必要です。</string>
+
+    <!-- Validation Errors -->
+    <string name="err_empty_name">レシピ名は空にできません</string>
+    <string name="err_no_ingredients">少なくとも1つの材料を追加してください</string>
+    <string name="err_no_steps">少なくとも1つの手順を追加してください</string>
+
+    <!-- Collections -->
+    <string name="collection_label">コレクション</string>
+    <string name="add_collection_btn">コレクションを追加</string>
+    <string name="select_collection_placeholder">コレクションを選択</string>
+    <string name="add_new_collection_btn">新しいコレクションを追加</string>
+    <string name="manage_collections_title">カテゴリーを管理</string>
+    <string name="add_collection_placeholder">新しいカテゴリーを追加...</string>
+    <string name="existing_collections_label">既存のカテゴリー</string>
+    <string name="delete_collection_title">カテゴリーを削除</string>
+    <string name="delete_collection_msg">このカテゴリーを削除してもよろしいですか？</string>
+    <string name="edit_collection_title">カテゴリーを編集</string>
+    <string name="collection_name_label">カテゴリー名</string>
+    <string name="empty_collections">コレクションが見つかりません。最初に追加しましょう！</string>
+    <string name="search_collections_placeholder">カテゴリーを検索...</string>
+    <string name="add_collection_title">コレクションを追加</string>
+    <string name="collection_name_hint">コレクション名</string>
+
+    <!-- Authentication -->
+    <string name="login_welcome_title">Culinary Haven へようこそ</string>
+    <string name="login_welcome_subtitle">あなただけの職人技レシピコレクション。</string>
+    <string name="continue_with_google">Google で続行</string>
+    <string name="copyright_text">© 2024 Culinary Haven. 伝統にインスパイアされて。</string>
+    <string name="err_context_not_activity">コンテキストがアクティビティではありません</string>
+    <string name="err_no_google_accounts">Google アカウントが見つかりません。SHA-1 が Firebase に登録されていることを確認してください。</string>
+    <string name="err_signin_failed">サインインに失敗しました: %1$s</string>
+
+    <!-- Premium -->
+    <string name="premium_title">プレミアムアップグレード</string>
+    <string name="premium_desc">すべてのレシピのアンロック、広告の削除、デバイス間でのデータ同期を永久に利用できます。</string>
+    <string name="buy_premium">Pro にアップグレード</string>
+    <string name="restore_purchase">購入を復元</string>
+    <string name="premium_success">プレミアムへようこそ！</string>
+    <string name="premium_active">プレミアムメンバーシップ有効</string>
+    <string name="confirm_account_title">アカウントの確認</string>
+    <string name="confirm_account_msg">購入内容は以下のアカウントにリンクされます: %1$s</string>
+    <string name="pro_member_status">あなたは Pro メンバーです</string>
+    <string name="unknown_account">不明なアカウント</string>
+
+    <!-- Profile -->
+    <string name="profile_pic_desc">プロフィール写真</string>
+    <string name="default_user_name">ユーザー</string>
+    <string name="get_pro_label">Pro になる</string>
+    <string name="import_data_label">データをインポート</string>
+    <string name="export_data_label">データをエクスポート</string>
+    <string name="logout_label">ログアウト</string>
+    <string name="import_data_title">データをインポート</string>
+    <string name="import_data_msg">データをインポートすると既存のデータが上書きされる可能性があります。続行しますか？</string>
+    <string name="continue_btn">続行</string>
+
+    <!-- Settings -->
+    <string name="change_language">言語を変更</string>
+    <string name="select_language">言語を選択</string>
+    <string name="share_app">アプリを共有</string>
+    <string name="cancel">キャンセル</string>
+</resources>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RecipeVault</string>
+    <string name="home_title">RecipeVault</string>
+    <string name="menu_desc">菜单</string>
+    <string name="search_desc">搜索</string>
+    <string name="add_recipe_desc">添加食谱</string>
+    <string name="search_placeholder">搜索食谱、食材...</string>
+    <string name="your_culinary_haven">您的烹饪天堂</string>
+    <string name="empty_recipes">未找到食谱。添加您的第一个食谱！</string>
+    <string name="search_empty">没有匹配您搜索内容的食谱。</string>
+    <string name="delete_recipe_title">删除食谱</string>
+    <string name="delete_recipe_msg">您确定要删除“%1$s”吗？</string>
+    <string name="nav_recipes">食谱</string>
+    <string name="nav_collections">收藏夹</string>
+    <string name="nav_profile">个人资料</string>
+    <string name="add_recipe_title">添加食谱</string>
+    <string name="edit_recipe_title">编辑食谱</string>
+    <string name="manage_steps_title">管理步骤</string>
+    <string name="basic_info_label">基本信息</string>
+    <string name="recipe_name_label">食谱名称</string>
+    <string name="recipe_name_placeholder">例如：乡村酸面包</string>
+    <string name="image_url_label">图片 URL</string>
+    <string name="time_label">时间（例如：1h 15m）</string>
+    <string name="difficulty_label">难度</string>
+    <string name="category_label">分类</string>
+    <string name="category_placeholder">选择分类</string>
+    <string name="cover_image_label">封面图片（可选）</string>
+    <string name="tap_to_upload">点击上传</string>
+    <string name="ingredients_label">食材</string>
+    <string name="add_ingredient_btn">添加食材</string>
+    <string name="steps_label">步骤</string>
+    <string name="add_step_btn">添加步骤</string>
+    <string name="next_step_btn">下一步</string>
+    <string name="save_recipe_btn">保存食谱</string>
+    <string name="confirm_btn">确认</string>
+    <string name="cancel_btn">取消</string>
+    <string name="edit_ingredient_title">编辑食材</string>
+    <string name="add_ingredient_title">添加食材</string>
+    <string name="ingredient_name_label">食材名称</string>
+    <string name="save_btn">保存</string>
+    <string name="edit_step_title">编辑烹饪步骤</string>
+    <string name="add_step_title">添加烹饪步骤</string>
+    <string name="step_desc_label">步骤描述</string>
+    <string name="back_desc">返回</string>
+    <string name="options_desc">选项</string>
+    <string name="edit_label">编辑</string>
+    <string name="delete_label">删除</string>
+    <string name="recipe_detail_title">食谱详情</string>
+    <string name="step_indicator_label">第 %1$d 步</string>
+    <string name="error_msg">错误：%1$s</string>
+    <string name="ingredients_bullet">• %1$s</string>
+    <string name="step_label_with_index">第 %1$d 步</string>
+    <string name="default_cooking_time">20分钟</string>
+    <string name="default_difficulty">简单</string>
+    <string name="step_prefix">第 %1$d 步：%2$s</string>
+    <string name="default_unit">数量</string>
+    <string name="quantity_label">数量</string>
+    <string name="unit_label">单位</string>
+    <string name="all_category">全部</string>
+    <string name="char_limit_format">%1$d / %2$d</string>
+    <string name="close_desc">关闭</string>
+    <string name="more_options_desc">更多选项</string>
+    <string name="finish_cooking_btn">完成烹饪</string>
+
+    <!-- Image Selection -->
+    <string name="select_image_title">选择图片</string>
+    <string name="gallery_option">相册</string>
+    <string name="camera_option">相机</string>
+    <string name="camera_permission_denied">需要相机权限才能拍照。</string>
+
+    <!-- Validation Errors -->
+    <string name="err_empty_name">食谱名称不能为空</string>
+    <string name="err_no_ingredients">请至少添加一种食材</string>
+    <string name="err_no_steps">请至少添加一个步骤</string>
+
+    <!-- Collections -->
+    <string name="collection_label">收藏</string>
+    <string name="add_collection_btn">添加收藏</string>
+    <string name="select_collection_placeholder">选择收藏</string>
+    <string name="add_new_collection_btn">添加新收藏</string>
+    <string name="manage_collections_title">管理分类</string>
+    <string name="add_collection_placeholder">添加新分类...</string>
+    <string name="existing_collections_label">现有分类</string>
+    <string name="delete_collection_title">删除分类</string>
+    <string name="delete_collection_msg">您确定要删除此分类吗？</string>
+    <string name="edit_collection_title">编辑分类</string>
+    <string name="collection_name_label">分类名称</string>
+    <string name="empty_collections">未找到收藏。添加您的第一个收藏！</string>
+    <string name="search_collections_placeholder">搜索分类...</string>
+    <string name="add_collection_title">添加收藏</string>
+    <string name="collection_name_hint">收藏名称</string>
+
+    <!-- Authentication -->
+    <string name="login_welcome_title">欢迎来到 Culinary Haven</string>
+    <string name="login_welcome_subtitle">您的私人手工食谱收藏。</string>
+    <string name="continue_with_google">使用 Google 继续</string>
+    <string name="copyright_text">© 2024 Culinary Haven. 灵感源自传统。</string>
+    <string name="err_context_not_activity">Context 不是 Activity</string>
+    <string name="err_no_google_accounts">未找到 Google 账号。请确保您的 SHA-1 已在 Firebase 注册。</string>
+    <string name="err_signin_failed">登录失败：%1$s</string>
+
+    <!-- Premium -->
+    <string name="premium_title">高级版升级</string>
+    <string name="premium_desc">解锁所有食谱、移除广告，并永久在设备间同步您的数据。</string>
+    <string name="buy_premium">升级到 Pro 版</string>
+    <string name="restore_purchase">恢复购买</string>
+    <string name="premium_success">欢迎使用高级版！</string>
+    <string name="premium_active">高级会员已激活</string>
+    <string name="confirm_account_title">确认账号</string>
+    <string name="confirm_account_msg">您的购买将关联至：%1$s</string>
+    <string name="pro_member_status">您是 Pro 会员</string>
+    <string name="unknown_account">未知账号</string>
+
+    <!-- Profile -->
+    <string name="profile_pic_desc">个人资料图片</string>
+    <string name="default_user_name">用户</string>
+    <string name="get_pro_label">获取 Pro 版</string>
+    <string name="import_data_label">导入数据</string>
+    <string name="export_data_label">导出数据</string>
+    <string name="logout_label">退出登录</string>
+    <string name="import_data_title">导入数据</string>
+    <string name="import_data_msg">导入数据可能会覆盖您的现有数据。您要继续吗？</string>
+    <string name="continue_btn">继续</string>
+
+    <!-- Settings -->
+    <string name="change_language">更改语言</string>
+    <string name="select_language">选择语言</string>
+    <string name="share_app">分享应用</string>
+    <string name="cancel">取消</string>
+</resources>

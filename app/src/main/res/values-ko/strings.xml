@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">RecipeVault</string>
+    <string name="home_title">RecipeVault</string>
+    <string name="menu_desc">메뉴</string>
+    <string name="search_desc">검색</string>
+    <string name="add_recipe_desc">레시피 추가</string>
+    <string name="search_placeholder">레시피, 재료 검색...</string>
+    <string name="your_culinary_haven">당신의 요리 안식처</string>
+    <string name="empty_recipes">레시피를 찾을 수 없습니다. 첫 번째 레시피를 추가해 보세요!</string>
+    <string name="search_empty">검색 결과와 일치하는 레시피가 없습니다.</string>
+    <string name="delete_recipe_title">레시피 삭제</string>
+    <string name="delete_recipe_msg">\'%1$s\'을(를) 삭제하시겠습니까?</string>
+    <string name="nav_recipes">레시피</string>
+    <string name="nav_collections">컬렉션</string>
+    <string name="nav_profile">프로필</string>
+    <string name="add_recipe_title">레시피 추가</string>
+    <string name="edit_recipe_title">레시피 수정</string>
+    <string name="manage_steps_title">단계 관리</string>
+    <string name="basic_info_label">기본 정보</string>
+    <string name="recipe_name_label">레시피 이름</string>
+    <string name="recipe_name_placeholder">예: 소박한 사워도우 빵</string>
+    <string name="image_url_label">이미지 URL</string>
+    <string name="time_label">시간 (예: 1h 15m)</string>
+    <string name="difficulty_label">난이도</string>
+    <string name="category_label">카테고리</string>
+    <string name="category_placeholder">카테고리 선택</string>
+    <string name="cover_image_label">커버 이미지 (선택 사항)</string>
+    <string name="tap_to_upload">탭하여 업로드</string>
+    <string name="ingredients_label">재료</string>
+    <string name="add_ingredient_btn">재료 추가</string>
+    <string name="steps_label">단계</string>
+    <string name="add_step_btn">단계 추가</string>
+    <string name="next_step_btn">다음 단계</string>
+    <string name="save_recipe_btn">레시피 저장</string>
+    <string name="confirm_btn">확인</string>
+    <string name="cancel_btn">취소</string>
+    <string name="edit_ingredient_title">재료 수정</string>
+    <string name="add_ingredient_title">재료 추가</string>
+    <string name="ingredient_name_label">재료 이름</string>
+    <string name="save_btn">저장</string>
+    <string name="edit_step_title">요리 단계 수정</string>
+    <string name="add_step_title">요리 단계 추가</string>
+    <string name="step_desc_label">단계 설명</string>
+    <string name="back_desc">뒤로</string>
+    <string name="options_desc">옵션</string>
+    <string name="edit_label">수정</string>
+    <string name="delete_label">삭제</string>
+    <string name="recipe_detail_title">레시피 상세</string>
+    <string name="step_indicator_label">%1$d단계</string>
+    <string name="error_msg">오류: %1$s</string>
+    <string name="ingredients_bullet">• %1$s</string>
+    <string name="step_label_with_index">%1$d단계</string>
+    <string name="default_cooking_time">20분</string>
+    <string name="default_difficulty">쉬움</string>
+    <string name="step_prefix">%1$d단계: %2$s</string>
+    <string name="default_unit">수량</string>
+    <string name="quantity_label">수량</string>
+    <string name="unit_label">단위</string>
+    <string name="all_category">전체</string>
+    <string name="char_limit_format">%1$d / %2$d</string>
+    <string name="close_desc">닫기</string>
+    <string name="more_options_desc">추가 옵션</string>
+    <string name="finish_cooking_btn">요리 완료</string>
+
+    <!-- Image Selection -->
+    <string name="select_image_title">이미지 선택</string>
+    <string name="gallery_option">갤러리</string>
+    <string name="camera_option">카메라</string>
+    <string name="camera_permission_denied">사진을 찍으려면 카메라 권한이 필요합니다.</string>
+
+    <!-- Validation Errors -->
+    <string name="err_empty_name">레시피 이름은 비워둘 수 없습니다.</string>
+    <string name="err_no_ingredients">최소 하나 이상의 재료를 추가해 주세요.</string>
+    <string name="err_no_steps">최소 하나 이상의 단계를 추가해 주세요.</string>
+
+    <!-- Collections -->
+    <string name="collection_label">컬렉션</string>
+    <string name="add_collection_btn">컬렉션 추가</string>
+    <string name="select_collection_placeholder">컬렉션 선택</string>
+    <string name="add_new_collection_btn">새 컬렉션 추가</string>
+    <string name="manage_collections_title">카테고리 관리</string>
+    <string name="add_collection_placeholder">새 카테고리 추가...</string>
+    <string name="existing_collections_label">기존 카테고리</string>
+    <string name="delete_collection_title">카테고리 삭제</string>
+    <string name="delete_collection_msg">이 카테고리를 삭제하시겠습니까?</string>
+    <string name="edit_collection_title">카테고리 수정</string>
+    <string name="collection_name_label">카테고리 이름</string>
+    <string name="empty_collections">컬렉션을 찾을 수 없습니다. 첫 번째 컬렉션을 추가해 보세요!</string>
+    <string name="search_collections_placeholder">카테고리 검색...</string>
+    <string name="add_collection_title">컬렉션 추가</string>
+    <string name="collection_name_hint">컬렉션 이름</string>
+
+    <!-- Authentication -->
+    <string name="login_welcome_title">Culinary Haven에 오신 것을 환영합니다</string>
+    <string name="login_welcome_subtitle">당신만의 장인 정신이 담긴\n레시피 컬렉션.</string>
+    <string name="continue_with_google">Google로 계속하기</string>
+    <string name="copyright_text">© 2024 Culinary Haven. 전통에서 영감을 얻다.</string>
+    <string name="err_context_not_activity">컨텍스트가 Activity가 아닙니다.</string>
+    <string name="err_no_google_accounts">Google 계정을 찾을 수 없습니다. SHA-1이 Firebase에 등록되어 있는지 확인해 주세요.</string>
+    <string name="err_signin_failed">로그인 실패: %1$s</string>
+
+    <!-- Premium -->
+    <string name="premium_title">프리미엄 업그레이드</string>
+    <string name="premium_desc">모든 레시피 잠금 해제, 광고 제거, 기기 간 데이터 동기화 기능을 영원히 이용하세요.</string>
+    <string name="buy_premium">Pro로 업그레이드</string>
+    <string name="restore_purchase">구매 복원</string>
+    <string name="premium_success">프리미엄 회원이 되신 것을 환영합니다!</string>
+    <string name="premium_active">프리미엄 멤버십 활성화됨</string>
+    <string name="confirm_account_title">계정 확인</string>
+    <string name="confirm_account_msg">구매 항목이 다음 계정에 연결됩니다: %1$s</string>
+    <string name="pro_member_status">Pro 회원입니다.</string>
+    <string name="unknown_account">알 수 없는 계정</string>
+
+    <!-- Profile -->
+    <string name="profile_pic_desc">프로필 사진</string>
+    <string name="default_user_name">사용자</string>
+    <string name="get_pro_label">Pro 되기</string>
+    <string name="import_data_label">데이터 가져오기</string>
+    <string name="export_data_label">데이터 내보내기</string>
+    <string name="logout_label">로그아웃</string>
+    <string name="import_data_title">데이터 가져오기</string>
+    <string name="import_data_msg">데이터를 가져오면 기존 데이터가 덮어씌워질 수 있습니다. 계속하시겠습니까?</string>
+    <string name="continue_btn">계속</string>
+
+    <!-- Settings -->
+    <string name="change_language">언어 변경</string>
+    <string name="select_language">언어 선택</string>
+    <string name="share_app">앱 공유</string>
+    <string name="cancel">취소</string>
+</resources>

@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -63,7 +64,7 @@ fun LoginScreen(
             Spacer(modifier = Modifier.height(48.dp))
 
             Text(
-                text = "Welcome to Culinary Haven",
+                text = stringResource(R.string.login_welcome_title),
                 fontSize = 28.sp,
                 fontWeight = FontWeight.Bold,
                 color = Color(0xFF2D2D2D),
@@ -73,7 +74,7 @@ fun LoginScreen(
             Spacer(modifier = Modifier.height(8.dp))
 
             Text(
-                text = "Your personal collection of\nartisanal recipes.",
+                text = stringResource(R.string.login_welcome_subtitle),
                 fontSize = 16.sp,
                 color = Color(0xFF6D6D6D),
                 textAlign = TextAlign.Center
@@ -99,7 +100,7 @@ fun LoginScreen(
 
                         try {
                             if (activity == null) {
-                                viewModel.onError("Context is not an Activity")
+                                viewModel.onError(context.getString(R.string.err_context_not_activity))
                                 return@launch
                             }
                             
@@ -111,10 +112,10 @@ fun LoginScreen(
                             viewModel.onGoogleSignInResult(googleIdToken)
                         } catch (e: NoCredentialException) {
                             Log.e("LoginScreen", "No accounts found", e)
-                            viewModel.onError("No Google accounts found. Please ensure your SHA-1 is registered in Firebase.")
+                            viewModel.onError(context.getString(R.string.err_no_google_accounts))
                         } catch (e: Exception) {
                             Log.e("LoginScreen", "Google Sign In Error", e)
-                            viewModel.onError("Sign in failed: ${e.localizedMessage}")
+                            viewModel.onError(context.getString(R.string.err_signin_failed, e.localizedMessage ?: ""))
                         }
                     }
                 },
@@ -140,7 +141,7 @@ fun LoginScreen(
                     )
                     Spacer(modifier = Modifier.width(12.dp))
                     Text(
-                        text = "Continue with Google",
+                        text = stringResource(R.string.continue_with_google),
                         fontSize = 16.sp,
                         fontWeight = FontWeight.Medium
                     )
@@ -165,7 +166,7 @@ fun LoginScreen(
         }
 
         Text(
-            text = "© 2024 Culinary Haven. Inspired by tradition.",
+            text = stringResource(R.string.copyright_text),
             modifier = Modifier
                 .align(Alignment.BottomCenter)
                 .padding(bottom = 16.dp),
