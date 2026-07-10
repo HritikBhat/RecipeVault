@@ -117,13 +117,13 @@ fun HomeScreen(
                 }
             }
 
-            Text(
-                text = stringResource(id = R.string.your_culinary_haven),
-                style = MaterialTheme.typography.headlineSmall,
-                fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
-                color = Color.Black
-            )
+//            Text(
+//                text = state.selectedCategory,
+//                style = MaterialTheme.typography.headlineSmall,
+//                fontWeight = FontWeight.Bold,
+//                modifier = Modifier.padding(horizontal = 16.dp, vertical = 16.dp),
+//                color = Color.Black
+//            )
 
             if (state.isLoading) {
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {

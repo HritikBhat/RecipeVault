@@ -58,23 +58,7 @@ fun RecipeCard(
                     contentScale = ContentScale.Crop
                 )
                 
-                Surface(
-                    modifier = Modifier
-                        .padding(12.dp)
-                        .align(Alignment.TopEnd)
-                        .size(36.dp),
-                    shape = CircleShape,
-                    color = Color.White.copy(alpha = 0.8f)
-                ) {
-                    IconButton(onClick = onFavoriteToggle) {
-                        Icon(
-                            imageVector = if (recipe.isFavorite) Icons.Default.Favorite else Icons.Default.FavoriteBorder,
-                            contentDescription = null,
-                            tint = if (recipe.isFavorite) Color.Red else Color.Black,
-                            modifier = Modifier.size(20.dp)
-                        )
-                    }
-                }
+
             }
 
             Column(modifier = Modifier.padding(16.dp)) {
@@ -120,38 +104,6 @@ fun RecipeCard(
                     }
                 }
 
-                Row(
-                    verticalAlignment = Alignment.CenterVertically,
-                    modifier = Modifier.padding(top = 4.dp)
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Schedule,
-                        contentDescription = null,
-                        tint = Color.Gray,
-                        modifier = Modifier.size(16.dp)
-                    )
-                    Spacer(modifier = Modifier.width(4.dp))
-                    Text(
-                        text = recipe.cookingTime.ifEmpty { stringResource(id = R.string.default_cooking_time) },
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = Color.Gray
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(text = "•", color = Color.Gray)
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Icon(
-                        imageVector = Icons.Default.SignalCellularAlt,
-                        contentDescription = null,
-                        tint = Color.Gray,
-                        modifier = Modifier.size(16.dp)
-                    )
-                    Spacer(modifier = Modifier.width(4.dp))
-                    Text(
-                        text = recipe.difficulty.ifEmpty { stringResource(id = R.string.default_difficulty) },
-                        style = MaterialTheme.typography.bodyMedium,
-                        color = Color.Gray
-                    )
-                }
             }
         }
     }
