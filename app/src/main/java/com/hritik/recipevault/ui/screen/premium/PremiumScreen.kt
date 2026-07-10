@@ -8,7 +8,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Diamond
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -90,7 +90,11 @@ fun PremiumScreen(
                 title = { Text(stringResource(R.string.premium_title), fontWeight = FontWeight.Bold, color = brownColor) },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.back_desc), tint = brownColor)
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = stringResource(R.string.back_desc),
+                            tint = brownColor
+                        )
                     }
                 },
                 windowInsets = WindowInsets(0, 0, 0, 0) // Remove internal status bar padding
