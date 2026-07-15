@@ -91,7 +91,7 @@
     <string name="collection_name_hint">Collection Name</string>
 
     <!-- Authentication -->
-    <string name="login_welcome_title">Welcome to Culinary Haven</string>
+    <string name="login_welcome_title">RecipeVault</string>
     <string name="login_welcome_subtitle">Your personal collection of\nartisanal recipes.</string>
     <string name="continue_with_google">Continue with Google</string>
     <string name="copyright_text">© 2024 Culinary Haven. Inspired by tradition.</string>

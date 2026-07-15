@@ -92,7 +92,7 @@
     <string name="collection_name_hint">Nome da Coleção</string>
 
     <!-- Authentication -->
-    <string name="login_welcome_title">Bem-vindo ao Culinary Haven</string>
+    <string name="login_welcome_title">RecipeVault</string>
     <string name="login_welcome_subtitle">Sua coleção pessoal de\nreceitas artesanais.</string>
     <string name="continue_with_google">Continuar com Google</string>
     <string name="copyright_text">© 2024 Culinary Haven. Inspirado pela tradição.</string>

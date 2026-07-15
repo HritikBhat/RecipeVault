@@ -2,6 +2,7 @@ package com.hritik.recipevault.ui.screen.login
 
 import android.app.Activity
 import android.util.Log
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -54,10 +55,9 @@ fun LoginScreen(
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Icon(
-                painter = painterResource(id = android.R.drawable.ic_menu_gallery),
+            Image(
+                painter = painterResource(id = R.drawable.ic_app_logo),
                 contentDescription = null,
-                tint = Color(0xFFE67E22),
                 modifier = Modifier.size(80.dp)
             )
 
@@ -134,7 +134,7 @@ fun LoginScreen(
                     horizontalArrangement = Arrangement.Center
                 ) {
                     Icon(
-                        painter = painterResource(id = android.R.drawable.ic_menu_info_details),
+                        painter = painterResource(id = R.drawable.ic_google_icon),
                         contentDescription = null,
                         modifier = Modifier.size(24.dp),
                         tint = Color.Unspecified
@@ -165,13 +165,13 @@ fun LoginScreen(
             }
         }
 
-        Text(
-            text = stringResource(R.string.copyright_text),
-            modifier = Modifier
-                .align(Alignment.BottomCenter)
-                .padding(bottom = 16.dp),
-            fontSize = 12.sp,
-            color = Color(0xFF9E9E9E)
-        )
+//        Text(
+//            text = stringResource(R.string.copyright_text),
+//            modifier = Modifier
+//                .align(Alignment.BottomCenter)
+//                .padding(bottom = 16.dp),
+//            fontSize = 12.sp,
+//            color = Color(0xFF9E9E9E)
+//        )
     }
 }

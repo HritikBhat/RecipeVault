@@ -92,7 +92,7 @@
     <string name="collection_name_hint">コレクション名</string>
 
     <!-- Authentication -->
-    <string name="login_welcome_title">Culinary Haven へようこそ</string>
+    <string name="login_welcome_title">RecipeVault</string>
     <string name="login_welcome_subtitle">あなただけの職人技レシピコレクション。</string>
     <string name="continue_with_google">Google で続行</string>
     <string name="copyright_text">© 2024 Culinary Haven. 伝統にインスパイアされて。</string>

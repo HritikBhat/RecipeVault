@@ -220,15 +220,15 @@ fun ProfileScreen(
 
             Spacer(modifier = Modifier.height(32.dp))
 
-            // Profile Options
-            ProfileOptionItem(
-                icon = Icons.Default.Star,
-                title = stringResource(R.string.get_pro_label),
-                iconColor = primaryAppColor,
-                onClick = onNavigateToPremium
-            )
+//            // Profile Options
+//            ProfileOptionItem(
+//                icon = Icons.Default.Star,
+//                title = stringResource(R.string.get_pro_label),
+//                iconColor = primaryAppColor,
+//                onClick = onNavigateToPremium
+//            )
             
-            Spacer(modifier = Modifier.height(12.dp))
+//            Spacer(modifier = Modifier.height(12.dp))
             
             val currentLanguage = AppCompatDelegate.getApplicationLocales()[0]?.displayLanguage ?: "English"
             ProfileOptionItem(

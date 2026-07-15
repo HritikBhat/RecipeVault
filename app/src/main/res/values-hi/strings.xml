@@ -92,7 +92,7 @@
     <string name="collection_name_hint">संग्रह का नाम</string>
 
     <!-- Authentication -->
-    <string name="login_welcome_title">कुलिनरी हेवन में आपका स्वागत है</string>
+    <string name="login_welcome_title">RecipeVault</string>
     <string name="login_welcome_subtitle">आपका व्यक्तिगत शिल्प रेसिपी संग्रह।</string>
     <string name="continue_with_google">गूगल के साथ जारी रखें</string>
     <string name="copyright_text">© 2024 कुलिनरी हेवन। परंपरा से प्रेरित।</string>

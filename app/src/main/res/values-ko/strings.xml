@@ -92,7 +92,7 @@
     <string name="collection_name_hint">컬렉션 이름</string>
 
     <!-- Authentication -->
-    <string name="login_welcome_title">Culinary Haven에 오신 것을 환영합니다</string>
+    <string name="login_welcome_title">RecipeVault</string>
     <string name="login_welcome_subtitle">당신만의 장인 정신이 담긴\n레시피 컬렉션.</string>
     <string name="continue_with_google">Google로 계속하기</string>
     <string name="copyright_text">© 2024 Culinary Haven. 전통에서 영감을 얻다.</string>

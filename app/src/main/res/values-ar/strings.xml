@@ -92,7 +92,7 @@
     <string name="collection_name_hint">اسم المجموعة</string>
 
     <!-- Authentication -->
-    <string name="login_welcome_title">مرحباً بك في Culinary Haven</string>
+    <string name="login_welcome_title">RecipeVault</string>
     <string name="login_welcome_subtitle">مجموعتك الشخصية من\nوصفات الحرفيين.</string>
     <string name="continue_with_google">المتابعة باستخدام Google</string>
     <string name="copyright_text">© 2024 Culinary Haven. مستوحى من التقاليد.</string>
