@@ -23,7 +23,7 @@ import androidx.credentials.GetCredentialRequest
 import androidx.credentials.exceptions.NoCredentialException
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
-import com.google.android.libraries.identity.googleid.GetGoogleIdOption
+import com.google.android.libraries.identity.googleid.GetSignInWithGoogleOption
 import com.google.android.libraries.identity.googleid.GoogleIdTokenCredential
 import com.hritik.recipevault.R
 import kotlinx.coroutines.launch
@@ -88,11 +88,9 @@ fun LoginScreen(
                     coroutineScope.launch {
                         viewModel.resetError()
                         
-                        val googleIdOption: GetGoogleIdOption = GetGoogleIdOption.Builder()
-                            .setFilterByAuthorizedAccounts(false)
-                            .setServerClientId(context.getString(R.string.default_web_client_id))
-                            .setAutoSelectEnabled(false)
-                            .build()
+                        val googleIdOption = GetSignInWithGoogleOption.Builder(
+                            serverClientId = context.getString(R.string.default_web_client_id)
+                        ).build()
 
                         val request: GetCredentialRequest = GetCredentialRequest.Builder()
                             .addCredentialOption(googleIdOption)
@@ -112,7 +110,7 @@ fun LoginScreen(
                             viewModel.onGoogleSignInResult(googleIdToken)
                         } catch (e: NoCredentialException) {
                             Log.e("LoginScreen", "No accounts found", e)
-                            viewModel.onError(context.getString(R.string.err_no_google_accounts))
+                            viewModel.onError("Sign in failed: ${e.localizedMessage ?: "No Google accounts found"}")
                         } catch (e: Exception) {
                             Log.e("LoginScreen", "Google Sign In Error", e)
                             viewModel.onError(context.getString(R.string.err_signin_failed, e.localizedMessage ?: ""))
@@ -164,14 +162,5 @@ fun LoginScreen(
                 )
             }
         }
-
-//        Text(
-//            text = stringResource(R.string.copyright_text),
-//            modifier = Modifier
-//                .align(Alignment.BottomCenter)
-//                .padding(bottom = 16.dp),
-//            fontSize = 12.sp,
-//            color = Color(0xFF9E9E9E)
-//        )
     }
 }
