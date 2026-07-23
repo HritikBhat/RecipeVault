@@ -31,7 +31,12 @@ class BillingHelper @Inject constructor(
 
     private var billingClient: BillingClient = BillingClient.newBuilder(context)
         .setListener(this)
-        .enablePendingPurchases()
+        .enablePendingPurchases(
+            PendingPurchasesParams.newBuilder()
+                .enableOneTimeProducts()
+                .build()
+        )
+        .enableAutoServiceReconnection()
         .build()
 
     init {
@@ -67,9 +72,9 @@ class BillingHelper @Inject constructor(
             )
             .build()
 
-        billingClient.queryProductDetailsAsync(queryProductDetailsParams) { billingResult, productDetailsList ->
-            if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && productDetailsList.isNotEmpty()) {
-                val productDetails = productDetailsList[0]
+        billingClient.queryProductDetailsAsync(queryProductDetailsParams) { billingResult, result ->
+            if (billingResult.responseCode == BillingClient.BillingResponseCode.OK && result.productDetailsList.isNotEmpty()) {
+                val productDetails = result.productDetailsList[0]
                 val billingFlowParams = BillingFlowParams.newBuilder()
                     .setProductDetailsParamsList(
                         listOf(

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ad-services-config>
+    <!-- Grants access to the Topics API for interest-based ads -->
+    <topics allowAllToAccess="true" />
+
+    <!-- Grants access to the Protected Audience API (formerly FLEDGE) -->
+    <custom-audiences allowAllToAccess="true" />
+
+    <!-- Grants access to the Attribution Reporting API -->
+    <attribution allowAllToAccess="true" />
+</ad-services-config>

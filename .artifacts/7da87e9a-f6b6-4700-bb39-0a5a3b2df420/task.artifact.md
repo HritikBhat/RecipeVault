@@ -1,0 +1,3 @@
+- [x] Update `libs.versions.toml` to remove `-ktx` from Firebase dependencies
+- [x] Sync Gradle project
+- [x] Verify build with `./gradlew :app:assembleDebug` (Confirmed Firebase resolution fixed; unrelated build errors found)
